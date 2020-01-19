@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context=".view.ClientePessoaFisicaActivity">
+
+  <TextView
+    android:id="@+id/txtAppName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="8dp"
+    android:text="@string/app_name"
+    android:textSize="36dp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/txtPessoaFisica"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="8dp"
+    android:fontFamily="serif"
+    android:text="@string/txtPessoaFisica"
+    android:textColor="@color/colorAzul"
+    android:textSize="24dp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/txtCPF"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="8dp"
+    android:text="@string/txtCPF"
+    android:textColor="@color/colorVerde"
+    android:textStyle="bold" />
+
+  <EditText
+    android:id="@+id/editCPF"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:ems="10"
+    android:hint="@string/txtHintCPF" />
+
+  <TextView
+    android:id="@+id/txtNomeCompleto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="16dp"
+    android:text="@string/txtNomeCompleto"
+    android:textColor="@color/colorVerde"
+    android:textStyle="bold" />
+
+  <EditText
+    android:id="@+id/editNomeCompleto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:ems="10"
+    android:hint="@string/txtHintNomeCompleto" />
+
+  <Button
+    android:id="@+id/btnSalvarConcluir"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginRight="16dp"
+    android:text="@string/btnSalvarConcluir" />
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:layout_margin="16dp"
+    android:orientation="horizontal">
+
+    <Button
+      android:id="@+id/btnVoltar"
+      android:layout_width="wrap_content"
+      android:layout_height="50dp"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginTop="8dp"
+      android:layout_marginRight="8dp"
+      android:layout_weight="1"
+      android:text="@string/btnVoltar" />
+
+    <Button
+      android:id="@+id/btnCancelar"
+      android:layout_width="wrap_content"
+      android:layout_height="50dp"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginLeft="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_weight="1"
+      android:text="@string/btnCancelar" />
+
+  </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

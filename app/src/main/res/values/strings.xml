@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">App ClienteVip V1</string>
+  <string name="app_name">App Clientes Vip</string>
   <string name="txt_titulo">Aplicativo do Claudio</string>
   <string name="txtDataAtual">03/01/2020</string>
   <string name="txtHoraAtual">12:43:00</string>
@@ -25,4 +25,27 @@
   <string name="btnAcessar">Acessar</string>
   <string name="btnSejaVip">Seja Vip</string>
   <string name="txtVersaoApp">Versão V1.0</string>
+
+  <!-- Tela novo cliente vip -->
+  <string name="txtNovoVip">Novo Vip</string>
+  <string name="txtPrimeiroNome">Primeiro Nome</string>
+  <string name="txtSobrenome">Sobrenome</string>
+  <string name="txtHintSobrenome">Digite seu sobrenome...</string>
+  <string name="txtPessoaFisica">Pessoa FÍsica</string>
+  <string name="btnSalvarContinuar">SALVAR E CONTINUAR</string>
+  <string name="btnCancelar">CANCELAR</string>
+  <string name="txtCPF">CPF</string>
+  <string name="txtHintCPF">Digite seu CPF...</string>
+  <string name="txtNomeCompleto">Nome Completo</string>
+  <string name="txtHintNomeCompleto">Nome completo igual do CPF</string>
+  <string name="btnSalvarConcluir">SALVAR E CONCLUIR</string>
+  <string name="txtPessoaJuridica">Pessoa Jurídica</string>
+  <string name="txtCNPJ">CNPJ</string>
+  <string name="txtHintCNPJ">Digite seu CNPJ</string>
+  <string name="txtRazaoSocial">Razão Social</string>
+  <string name="txtHintRazaoSocial">Razão Social igual do cartão CNPJ</string>
+  <string name="txtDataAberturaEmpresa">Data de Abertura da Empresa</string>
+  <string name="txtHintDataAberturaEmpresa">dd/mm/aaaa</string>
+  <string name="txtSimplesNacional">Simples Nacional</string>
+  <string name="txtMEI">MEI</string>
 </resources>

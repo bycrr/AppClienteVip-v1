@@ -3,6 +3,7 @@ package br.com.bycrr.v1.appclientevip.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,14 +14,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.bycrr.v1.appclientevip.R;
+import br.com.bycrr.v1.appclientevip.api.AppUtil;
 import br.com.bycrr.v1.appclientevip.controller.ClienteController;
 import br.com.bycrr.v1.appclientevip.model.Cliente;
 
 public class LoginActivity extends AppCompatActivity {
 
   // declarar objetos e variáveis
-  Cliente cliente;
+  Cliente clienteFake;
   boolean isFormularioOk, isLembrarSenha;
+  private SharedPreferences preferences;
 
   // criar variáveis de tela
   TextView txtRecuperarSenha, txtLerPolitica;
@@ -41,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         if(isFormularioOk = validarFormulario()) {
 
           if(validarDadosUsuario()) {
+            salvarSharedPreferences();
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -51,6 +55,15 @@ public class LoginActivity extends AppCompatActivity {
           }
 
         }
+      }
+    });
+    btnSejaVip.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent(LoginActivity.this, ClienteVipActivity.class);
+        startActivity(intent);
+        finish();
+        return;
       }
     });
     txtRecuperarSenha.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   private boolean validarDadosUsuario() {
-    return ClienteController.validarDadosCliente();
+    return ClienteController.validarDadosCliente(clienteFake, editEmail.getText().toString(), editSenha.getText().toString());
   }
 
   private boolean validarFormulario() {
@@ -97,10 +110,24 @@ public class LoginActivity extends AppCompatActivity {
     btnAcessar = findViewById(R.id.btnAcessar);
     btnSejaVip = findViewById(R.id.btnSejaVip);
     isFormularioOk = false;
+    clienteFake = ClienteController.getClienteFake();
+    restaurarSharedPreferences();
   }
 
   public void lembrarSenha(View view) {
     isLembrarSenha = chLembrar.isChecked();
-    int teste = 0;
+  }
+
+  private void salvarSharedPreferences() {
+    preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
+    SharedPreferences.Editor dados = preferences.edit();
+    dados.putBoolean("loginAutomatico", isLembrarSenha);
+    dados.putString("emailCliente", editEmail.getText().toString());
+    dados.apply();
+  }
+
+  private void restaurarSharedPreferences() {
+    preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
+    isLembrarSenha = preferences.getBoolean("loginAutomatico", false);
   }
 }

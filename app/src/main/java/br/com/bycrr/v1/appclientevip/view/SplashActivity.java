@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_splash);
     //salvarSharedPreferences();
-    restaurarSharedPreferences();
+    //restaurarSharedPreferences();
     iniciarAplicativo();
   }
 
@@ -43,12 +43,12 @@ public class SplashActivity extends AppCompatActivity {
     }, AppUtil.TIME_SPLASH);
   }
 
-  private void salvarSharedPreferences() {
+  /*private void salvarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     SharedPreferences.Editor dados = preferences.edit();
-    dados.putBoolean("loginAutomatico", true);
+    dados.putBoolean("loginAutomatico", false);
     dados.apply();
-  }
+  }*/
 
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
