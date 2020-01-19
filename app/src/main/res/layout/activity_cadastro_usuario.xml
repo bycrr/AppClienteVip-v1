@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context=".view.CadastroUsuarioActivity">
+
+  <TextView
+    android:id="@+id/txtCadastro"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="16dp"
+    android:text="@string/txtCadastro"
+    android:textSize="36dp"
+    android:textStyle="bold" />
+
+  <TextView
+    android:id="@+id/textNome"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:text="@string/txtNome"
+    android:textStyle="bold" />
+
+  <EditText
+    android:id="@+id/editNome"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="16dp"
+    android:ems="10"
+    android:hint="@string/txtHintNome"
+    android:inputType="textPersonName" />
+
+  <TextView
+    android:id="@+id/textEmail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:text="@string/txtEmail"
+    android:textStyle="bold" />
+
+  <EditText
+    android:id="@+id/editEmail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="16dp"
+    android:ems="10"
+    android:hint="@string/txtHintEmail"
+    android:inputType="textEmailAddress" />
+
+  <TextView
+    android:id="@+id/textSenhaA"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:text="@string/txtSenhaA"
+    android:textStyle="bold" />
+
+  <EditText
+    android:id="@+id/editSenhaA"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="16dp"
+    android:ems="10"
+    android:hint="@string/editSenhaA"
+    android:inputType="numberPassword" />
+
+  <TextView
+    android:id="@+id/textSenhaB"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:text="@string/txtSenhaB"
+    android:textStyle="bold" />
+
+  <EditText
+    android:id="@+id/editSenhaB"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="16dp"
+    android:ems="10"
+    android:hint="@string/editSenhaB"
+    android:inputType="numberPassword" />
+
+  <CheckBox
+    android:id="@+id/ckTermo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="8dp"
+    android:onClick="validarTermo"
+    android:text="@string/ckTermo"
+    android:textStyle="bold" />
+
+  <Button
+    android:id="@+id/btnCadastro"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="16dp"
+    android:text="@string/btnCadastro" />
+</androidx.appcompat.widget.LinearLayoutCompat>

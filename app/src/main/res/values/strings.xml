@@ -1,0 +1,28 @@
+<resources>
+  <string name="app_name">App ClienteVip V1</string>
+  <string name="txt_titulo">Aplicativo do Claudio</string>
+  <string name="txtDataAtual">03/01/2020</string>
+  <string name="txtHoraAtual">12:43:00</string>
+  <string name="btnCadastro">Cadastrar</string>
+  <string name="btnVoltar">VOLTAR</string>
+
+  <!-- formulário de cadastro de usuários -->
+  <string name="txtCadastro">Cadastro</string>
+  <string name="txtNome">Nome</string>
+  <string name="txtHintNome">Digite seu primeiro nome</string>
+  <string name="txtEmail">E-mail</string>
+  <string name="txtHintEmail">Digite seu e-mail</string>
+  <string name="txtSenhaA">Senha</string>
+  <string name="editSenhaA">Digite sua senha</string>
+  <string name="txtSenhaB">Repita sua senha</string>
+  <string name="editSenhaB">Confirme a senha digitada</string>
+  <string name="ckTermo">Li e aceito os termos de uso e política de privacidade.</string>
+
+  <!-- Tela Login -->
+  <string name="txtLogin">Login</string>
+  <string name="txtLembrar">Lembrar</string>
+  <string name="txtRecuperarSenha">Recuperar Senha</string>
+  <string name="btnAcessar">Acessar</string>
+  <string name="btnSejaVip">Seja Vip</string>
+  <string name="txtVersaoApp">Versão V1.0</string>
+</resources>
