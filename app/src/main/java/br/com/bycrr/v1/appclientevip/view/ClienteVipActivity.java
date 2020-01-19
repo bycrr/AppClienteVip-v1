@@ -45,10 +45,12 @@ public class ClienteVipActivity extends AppCompatActivity {
 
           if(isPessoaFisica) {
             // tela de cadastro do CPF
-                Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaFisicaActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaFisicaActivity.class);
+            startActivity(intent);
           } else {
             // tela de cadastro do CNPJ
+            Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaJuridicaActivity.class);
+            startActivity(intent);
           }
         }
       }
