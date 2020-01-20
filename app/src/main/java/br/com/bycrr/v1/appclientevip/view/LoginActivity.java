@@ -70,6 +70,8 @@ public class LoginActivity extends AppCompatActivity {
       @Override
       public void onClick(View v) {
         Toast.makeText(getApplicationContext(), "Carregando tela de recuperação de senha...", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(LoginActivity.this, RecuperarSenhaActivity.class);
+        startActivity(intent);
       }
     });
 
