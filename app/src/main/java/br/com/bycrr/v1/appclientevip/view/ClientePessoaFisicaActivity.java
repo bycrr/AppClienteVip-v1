@@ -24,7 +24,7 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
   // criar variáveis de tela
   EditText editCPF, editNomeCompleto;
-  Button btnSalvarContinuar, btnVoltar, btnCancelar;
+  Button btnSalvarConcluir, btnVoltar, btnCancelar;
   boolean isFormularioOk;
 
   @Override
@@ -33,7 +33,7 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
     setContentView(R.layout.activity_cliente_pessoa_fisica);
     initFormulario();
 
-    btnSalvarContinuar.setOnClickListener(new View.OnClickListener() {
+    btnSalvarConcluir.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
 
@@ -75,7 +75,7 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
   private void initFormulario() {
     editCPF = findViewById(R.id.editCPF);
     editNomeCompleto = findViewById(R.id.editNomeCompleto);
-    btnSalvarContinuar = findViewById(R.id.btnSalvarContinuar);
+    btnSalvarConcluir = findViewById(R.id.btnSalvarConcluir);
     btnCancelar = findViewById(R.id.btnCancelar);
     btnVoltar = findViewById(R.id.btnVoltar);
     isFormularioOk = false;

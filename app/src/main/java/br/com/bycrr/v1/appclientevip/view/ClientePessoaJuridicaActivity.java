@@ -25,7 +25,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
 
   // criar variáveis de tela
   EditText editCNPJ, editRazaoSocial, editDataAberturaEmpresa;
-  Button btnSalvarContinuar, btnVoltar, btnCancelar;
+  Button btnSalvarConcluir, btnVoltar, btnCancelar;
   CheckBox chSimplesNacional, chMEI;
   boolean isFormularioOk, isSimplesNacional, isMEI;
 
@@ -35,7 +35,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
     setContentView(R.layout.activity_cliente_pessoa_juridica);
     initFormulario();
 
-    btnSalvarContinuar.setOnClickListener(new View.OnClickListener() {
+    btnSalvarConcluir.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
 
@@ -83,12 +83,12 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
   }
 
   private void initFormulario() {
-    editCNPJ = findViewById(R.id.editCPF);
-    editRazaoSocial = findViewById(R.id.editNomeCompleto);
+    editCNPJ = findViewById(R.id.editCNPJ);
+    editRazaoSocial = findViewById(R.id.editRazaoSocial);
     editDataAberturaEmpresa = findViewById(R.id.editDataAberturaEmpresa);
     chSimplesNacional = findViewById(R.id.ckSimplesNacional);
     chMEI = findViewById(R.id.ckMEI);
-    btnSalvarContinuar = findViewById(R.id.btnSalvarContinuar);
+    btnSalvarConcluir = findViewById(R.id.btnSalvarConcluir);
     btnCancelar = findViewById(R.id.btnCancelar);
     btnVoltar = findViewById(R.id.btnVoltar);
     isFormularioOk = false;
