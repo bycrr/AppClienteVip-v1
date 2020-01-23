@@ -5,7 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
-  tools:context=".view.CadastroUsuarioActivity">
+  tools:context=".view.CredencialAcessoActivity">
 
   <TextView
     android:id="@+id/txtCadastro"
@@ -13,7 +13,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_margin="16dp"
-    android:text="@string/txtCadastro"
+    android:text="@string/txtFinalizacaoCadastro"
     android:textSize="36dp"
     android:textStyle="bold" />
 
@@ -23,6 +23,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:text="@string/txtNome"
+    android:textColor="@color/colorAzul"
     android:textStyle="bold" />
 
   <EditText
@@ -33,6 +34,7 @@
     android:layout_marginTop="8dp"
     android:layout_marginRight="16dp"
     android:ems="10"
+    android:enabled="false"
     android:hint="@string/txtHintNome"
     android:inputType="textPersonName" />
 
@@ -42,6 +44,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:text="@string/txtEmail"
+    android:textColor="@color/colorVerde"
     android:textStyle="bold" />
 
   <EditText
@@ -61,6 +64,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:text="@string/txtSenhaA"
+    android:textColor="@color/colorVerde"
     android:textStyle="bold" />
 
   <EditText
@@ -80,6 +84,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:text="@string/txtSenhaB"
+    android:textColor="@color/colorVerde"
     android:textStyle="bold" />
 
   <EditText
@@ -101,6 +106,7 @@
     android:layout_marginTop="8dp"
     android:onClick="validarTermo"
     android:text="@string/ckTermo"
+    android:textColor="@color/colorAzul"
     android:textStyle="bold" />
 
   <Button

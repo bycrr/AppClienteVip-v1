@@ -4,12 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.shashank.sony.fancydialoglib.Animation;
+import com.shashank.sony.fancydialoglib.FancyAlertDialog;
+import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
+import com.shashank.sony.fancydialoglib.Icon;
 
 import br.com.bycrr.v1.appclientevip.R;
 import br.com.bycrr.v1.appclientevip.api.AppUtil;
@@ -46,7 +53,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
           novoClientePJ.setSimplesNacional(isSimplesNacional);
           novoClientePJ.setMei(isMEI);
           salvarSharedPreferences();
-          Intent intent = new Intent(ClientePessoaJuridicaActivity.this, LoginActivity.class);
+          Intent intent = new Intent(ClientePessoaJuridicaActivity.this, CredencialAcessoActivity.class);
           startActivity(intent);
         }
       }
@@ -57,6 +64,35 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
       public void onClick(View v) {
         Intent intent = new Intent(ClientePessoaJuridicaActivity.this, LoginActivity.class);
         startActivity(intent);
+      }
+    });
+    btnCancelar.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        new FancyAlertDialog.Builder(ClientePessoaJuridicaActivity.this)
+          .setTitle("Confirme o Cancelamento")
+          .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
+          .setMessage("Deseja realmente cancelar?")
+          .setNegativeBtnText("Não")
+          .setPositiveBtnBackground(Color.parseColor("#4ECA25"))  //Don't pass R.color.colorvalue
+          .setPositiveBtnText("Sim")
+          .setNegativeBtnBackground(Color.parseColor("#FF4081"))  //Don't pass R.color.colorvalue
+          .setAnimation(Animation.POP)
+          .isCancellable(true)
+          .setIcon(R.mipmap.ic_launcher_round, Icon.Visible)
+          .OnPositiveClicked(new FancyAlertDialogListener() {
+            @Override
+            public void OnClick() {
+              Toast.makeText(getApplicationContext(),"Cancelado com sucesso.",Toast.LENGTH_SHORT).show();
+            }
+          })
+          .OnNegativeClicked(new FancyAlertDialogListener() {
+            @Override
+            public void OnClick() {
+              Toast.makeText(getApplicationContext(),"Continue seu cadastro.",Toast.LENGTH_SHORT).show();
+            }
+          })
+          .build();
       }
     });
   }
@@ -102,10 +138,12 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
   private void salvarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     SharedPreferences.Editor dados = preferences.edit();
-    //dados.putString("primeiroNome", novoVip.getPrimeiroNome().toString());
-    //dados.putString("sobrenome", novoVip.getSobrenome().toString());
-    //dados.putBoolean("pessoaFisica", novoVip.getPessoaFisica());
-    //dados.apply();
+    dados.putString("cnpj", editCNPJ.getText().toString());
+    dados.putString("dataAberturaEmpresa", editDataAberturaEmpresa.getText().toString());
+    dados.putString("razaoSocial", editRazaoSocial.getText().toString());
+    dados.putBoolean("simplesNacional", isSimplesNacional);
+    dados.putBoolean("mei", isMEI);
+    dados.apply();
   }
 
   private void restaurarSharedPreferences() {

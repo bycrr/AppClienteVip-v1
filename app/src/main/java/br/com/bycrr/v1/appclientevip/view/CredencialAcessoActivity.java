@@ -3,6 +3,8 @@ package br.com.bycrr.v1.appclientevip.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,9 +13,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import br.com.bycrr.v1.appclientevip.R;
+import com.shashank.sony.fancydialoglib.Animation;
+import com.shashank.sony.fancydialoglib.FancyAlertDialog;
+import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
+import com.shashank.sony.fancydialoglib.Icon;
 
-public class CadastroUsuarioActivity extends AppCompatActivity {
+import br.com.bycrr.v1.appclientevip.R;
+import br.com.bycrr.v1.appclientevip.api.AppUtil;
+
+public class CredencialAcessoActivity extends AppCompatActivity {
 
   // criar variáveis
   Button btnCadastro;
@@ -23,11 +31,13 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
   EditText editSenhaB;
   CheckBox ckTermo;
   boolean isFormularioOk;
+  SharedPreferences preferences;
+  Boolean isPessoaFisica;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cadastro_usuario);
+    setContentView(R.layout.activity_credencial_acesso);
 
     // inicializar o formuário
     initFormulario();
@@ -70,11 +80,29 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             editSenhaA.setError("*");
             editSenhaB.setError("b");
             editSenhaB.requestFocus();
-            Toast.makeText(getApplicationContext(),"As senhas digitadas não conferem!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"As senhas digitadas não conferem!", Toast.LENGTH_LONG).show();
+            new FancyAlertDialog.Builder(CredencialAcessoActivity.this)
+              .setTitle("ATENÇÃO!")
+              .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
+              .setMessage("As senhas digitadas não são iguais. Por favor, tente novamente.")
+              .setPositiveBtnText("OK")
+              .setPositiveBtnBackground(Color.parseColor("#4ECA25"))  //Don't pass R.color.colorvalue
+              .setAnimation(Animation.POP)
+              .isCancellable(true)
+              .setIcon(R.mipmap.ic_launcher_round, Icon.Visible)
+              .OnPositiveClicked(new FancyAlertDialogListener() {
+                @Override
+                public void OnClick() {
+                }
+              })
+              .build();
 
           } else {
-            Intent iMenuPrincipal = new Intent(CadastroUsuarioActivity.this, MainActivity.class);
+            salvarSharedPreferences();
+            Intent iMenuPrincipal = new Intent(CredencialAcessoActivity.this, LoginActivity.class);
             startActivity(iMenuPrincipal);
+            finish();
+            return;
           }
         }
       }
@@ -89,6 +117,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     editSenhaB = findViewById(R.id.editSenhaB);
     ckTermo = findViewById(R.id.ckTermo);
     isFormularioOk = false;
+    restaurarSharedPreferences();
   }
 
   public void validarTermo(View view) {
@@ -105,4 +134,25 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     retorno = (senhaA == senhaB);
     return retorno;
   }
+
+  private void salvarSharedPreferences() {
+    preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
+    SharedPreferences.Editor dados = preferences.edit();
+    dados.putString("email", editEmail.getText().toString());
+    dados.putString("senha", editSenhaA.getText().toString());
+    dados.apply();
+  }
+
+  private void restaurarSharedPreferences() {
+    preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
+    isPessoaFisica = preferences.getBoolean("pessoaFisica", false);
+
+    if (isPessoaFisica) {
+      editNome.setText(preferences.getString("nomeCompleto", "Verifique os dados"));
+
+    } else {
+      editNome.setText(preferences.getString("razaoSocial", "Verifique os dados"));
+    }
+  }
+
 }

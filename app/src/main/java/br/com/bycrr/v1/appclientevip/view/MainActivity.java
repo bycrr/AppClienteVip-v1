@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     btnCadastro.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent iTelaCadastro = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
+        Intent iTelaCadastro = new Intent(MainActivity.this, CredencialAcessoActivity.class);
         startActivity(iTelaCadastro);
       }
     });

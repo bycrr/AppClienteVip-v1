@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +13,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.shashank.sony.fancydialoglib.Animation;
+import com.shashank.sony.fancydialoglib.FancyAlertDialog;
+import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
+import com.shashank.sony.fancydialoglib.Icon;
 
 import br.com.bycrr.v1.appclientevip.R;
 import br.com.bycrr.v1.appclientevip.api.AppUtil;
@@ -78,7 +84,33 @@ public class LoginActivity extends AppCompatActivity {
     txtLerPolitica.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Toast.makeText(getApplicationContext(), "Carregando tela com a política de privacidade...", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Carregando tela com a política de privacidade...", Toast.LENGTH_LONG).show();
+        new FancyAlertDialog.Builder(LoginActivity.this)
+          .setTitle("Política de Privacidade & Termos de Uso")
+          .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
+          .setMessage("Aqui vai a mensagem da política ... bla bla bla ...")
+          .setNegativeBtnText("Discordo")
+          .setNegativeBtnBackground(Color.parseColor("#FF4081"))  //Don't pass R.color.colorvalue
+          .setPositiveBtnText("Concordo")
+          .setPositiveBtnBackground(Color.parseColor("#4ECA25"))  //Don't pass R.color.colorvalue
+          .setAnimation(Animation.POP)
+          .isCancellable(true)
+          .setIcon(R.mipmap.ic_launcher_round, Icon.Visible)
+          .OnPositiveClicked(new FancyAlertDialogListener() {
+            @Override
+            public void OnClick() {
+              Toast.makeText(getApplicationContext(),"Obrigado! Seja bem vindo! Conclua seu cadastro.",Toast.LENGTH_SHORT).show();
+            }
+          })
+          .OnNegativeClicked(new FancyAlertDialogListener() {
+            @Override
+            public void OnClick() {
+              Toast.makeText(getApplicationContext(),"Lamentamos. Mas, é necessário concordar com a política e termos.",Toast.LENGTH_SHORT).show();
+              finish();
+              return;
+            }
+          })
+          .build();
       }
     });
   }

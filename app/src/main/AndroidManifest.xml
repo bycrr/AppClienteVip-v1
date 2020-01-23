@@ -15,7 +15,7 @@
     <activity android:name=".view.ClienteVipActivity" />
     <activity android:name=".view.LoginActivity" />
     <activity android:name=".view.MainActivity" />
-    <activity android:name=".view.CadastroUsuarioActivity" />
+    <activity android:name=".view.CredencialAcessoActivity" />
     <activity android:name=".view.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
