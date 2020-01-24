@@ -50,15 +50,16 @@ public class ClienteVipActivity extends AppCompatActivity {
           novoVip.setPessoaFisica(isPessoaFisica);
           salvarSharedPreferences();
 
-          if(isPessoaFisica) {
+          //if(isPessoaFisica) {
             // tela de cadastro do CPF
             Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaFisicaActivity.class);
             startActivity(intent);
-          } else {
+
+          /*} else {
             // tela de cadastro do CNPJ
             Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaJuridicaActivity.class);
             startActivity(intent);
-          }
+          }*/
         }
       }
     });

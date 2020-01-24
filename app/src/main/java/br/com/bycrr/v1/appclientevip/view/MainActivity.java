@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    txtTitulo = findViewById(R.id.txtTitulo);
-    txtDataAtual = findViewById(R.id.textDataAtual);
-    txtHoraAtual = findViewById(R.id.textHoraAtual);
+    /*txtTitulo = findViewById(R.id.txtTitulo);
+    txtDataAtual = findViewById(R.id.txt);
+    txtHoraAtual = findViewById(R.id.txtHoraAtual);
     btnCadastro = findViewById(R.id.btnCadastro);
     txtTitulo.setText("Curso Android");
     txtTitulo.setTextColor(getResources().getColor(R.color.colorTextView));
@@ -37,6 +37,6 @@ public class MainActivity extends AppCompatActivity {
         Intent iTelaCadastro = new Intent(MainActivity.this, CredencialAcessoActivity.class);
         startActivity(iTelaCadastro);
       }
-    });
+    });*/
   }
 }

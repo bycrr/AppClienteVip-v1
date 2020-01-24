@@ -50,4 +50,9 @@
   <string name="txtMEI">MEI</string>
   <string name="btnRecuperar">Recuperar</string>
   <string name="txtFinalizacaoCadastro">Credenciais de Acesso</string>
+  <string name="btnMeusDados">Meus Dados</string>
+  <string name="btnAtualizarMeusDados">Atualizar Meus Dados</string>
+  <string name="btnExcluirMinhaConta">Excluir Minha Conta</string>
+  <string name="btnConsultarClientesVip">Consultar Clientes Vip</string>
+  <string name="btnSairAplicativo">Sair do Aplicativo</string>
 </resources>

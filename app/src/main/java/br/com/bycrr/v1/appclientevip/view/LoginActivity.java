@@ -27,7 +27,7 @@ import br.com.bycrr.v1.appclientevip.model.Cliente;
 public class LoginActivity extends AppCompatActivity {
 
   // declarar objetos e variáveis
-  Cliente clienteFake;
+  Cliente clienteSalvo;
   boolean isFormularioOk, isLembrarSenha;
   private SharedPreferences preferences;
 
@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   private boolean validarDadosUsuario() {
-    return ClienteController.validarDadosCliente(clienteFake, editEmail.getText().toString(), editSenha.getText().toString());
+    return ClienteController.validarDadosCliente(clienteSalvo, editEmail.getText().toString(), editSenha.getText().toString());
   }
 
   private boolean validarFormulario() {
@@ -144,7 +144,8 @@ public class LoginActivity extends AppCompatActivity {
     btnAcessar = findViewById(R.id.btnAcessar);
     btnSejaVip = findViewById(R.id.btnSejaVip);
     isFormularioOk = false;
-    clienteFake = ClienteController.getClienteFake();
+    //clienteFake = ClienteController.getClienteFake();
+    clienteSalvo = new Cliente();
     restaurarSharedPreferences();
   }
 
@@ -162,6 +163,12 @@ public class LoginActivity extends AppCompatActivity {
 
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
+    isLembrarSenha = preferences.getBoolean("loginAutomatico", false);
+    clienteSalvo.setEmail(preferences.getString("email", "erro"));
+    clienteSalvo.setSenha(preferences.getString("senha", "erro"));
+    clienteSalvo.setPrimeiroNome(preferences.getString("primeiroNome", "erro"));
+    clienteSalvo.setSobrenome(preferences.getString("sobrenome", "erro"));
+    clienteSalvo.setPessoaFisica(preferences.getBoolean("pessoaFisica", false));
     isLembrarSenha = preferences.getBoolean("loginAutomatico", false);
   }
 }
