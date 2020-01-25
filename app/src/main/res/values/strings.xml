@@ -55,4 +55,6 @@
     <string name="btnExcluirMinhaConta">Excluir Minha Conta</string>
     <string name="btnConsultarClientesVip">Consultar Clientes Vip</string>
     <string name="btnSairAplicativo">Sair do Aplicativo</string>
+  <string name="txtConsultarClientesVip">Consultar Clientes VIP</string>
+  <string name="txtCliente">Cliente</string>
 </resources>
