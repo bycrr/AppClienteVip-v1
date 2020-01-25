@@ -20,7 +20,7 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
-    android:id="@+id/textNomeCliente"
+    android:id="@+id/txtNomeCliente"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="30sp"
@@ -42,9 +42,10 @@
     android:text="@string/btnMeusDados"
     android:textColor="@color/colorTextView"
     android:textStyle="bold"
+    android:onClick="meusDados"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textNomeCliente" />
+    app:layout_constraintTop_toBottomOf="@+id/txtNomeCliente" />
 
   <Button
     android:id="@+id/btnAtualizarMeusDados"
@@ -57,6 +58,7 @@
     android:text="@string/btnAtualizarMeusDados"
     android:textColor="@color/colorTextView"
     android:textStyle="bold"
+    android:onClick="atualizarMeusDados"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/btnMeusDados" />
@@ -72,6 +74,7 @@
     android:text="@string/btnExcluirMinhaConta"
     android:textColor="@color/colorTextView"
     android:textStyle="bold"
+    android:onClick="excluirMinhaConta"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/btnAtualizarMeusDados" />
@@ -87,6 +90,7 @@
     android:text="@string/btnConsultarClientesVip"
     android:textColor="@color/colorTextView"
     android:textStyle="bold"
+    android:onClick="consultarClientesVip"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/btnExcluirMinhaConta" />
@@ -102,6 +106,7 @@
     android:text="@string/btnSairAplicativo"
     android:textColor="@color/colorTextView"
     android:textStyle="bold"
+    android:onClick="sairDoAplicativo"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/btnConsultarClientesVip" />

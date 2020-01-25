@@ -1,58 +1,58 @@
 <resources>
-  <string name="app_name">App Clientes Vip</string>
-  <string name="txt_titulo">Aplicativo do Claudio</string>
-  <string name="txtDataAtual">03/01/2020</string>
-  <string name="txtHoraAtual">12:43:00</string>
-  <string name="btnCadastro">Cadastrar</string>
-  <string name="btnVoltar">VOLTAR</string>
+    <string name="app_name">App Clientes Vip</string>
+    <string name="txt_titulo">Aplicativo do Claudio</string>
+    <string name="txtDataAtual">03/01/2020</string>
+    <string name="txtHoraAtual">12:43:00</string>
+    <string name="btnCadastro">Cadastrar</string>
+    <string name="btnVoltar">VOLTAR</string>
 
-  <!-- formulário de cadastro de usuários -->
-  <string name="txtCadastro">Cadastro</string>
-  <string name="txtNome">Nome</string>
-  <string name="txtHintNome">Digite seu primeiro nome</string>
-  <string name="txtEmail">E-mail</string>
-  <string name="txtHintEmail">Digite seu e-mail</string>
-  <string name="txtSenhaA">Senha</string>
-  <string name="editSenhaA">Digite sua senha</string>
-  <string name="txtSenhaB">Repita sua senha</string>
-  <string name="editSenhaB">Confirme a senha digitada</string>
-  <string name="ckTermo">Li e aceito os termos de uso e política de privacidade.</string>
+    <!-- formulário de cadastro de usuários -->
+    <string name="txtCadastro">Cadastro</string>
+    <string name="txtNome">Nome</string>
+    <string name="txtHintNome">Digite seu primeiro nome</string>
+    <string name="txtEmail">E-mail</string>
+    <string name="txtHintEmail">Digite seu e-mail</string>
+    <string name="txtSenhaA">Senha</string>
+    <string name="editSenhaA">Digite sua senha</string>
+    <string name="txtSenhaB">Repita sua senha</string>
+    <string name="editSenhaB">Confirme a senha digitada</string>
+    <string name="ckTermo">Li e aceito os termos de uso e política de privacidade.</string>
 
-  <!-- Tela Login -->
-  <string name="txtLogin">Login</string>
-  <string name="txtLembrar">Lembrar</string>
-  <string name="txtRecuperarSenha">Recuperar Senha</string>
-  <string name="btnAcessar">Acessar</string>
-  <string name="btnSejaVip">Seja Vip</string>
-  <string name="txtVersaoApp">Versão V1.0</string>
+    <!-- Tela Login -->
+    <string name="txtLogin">Login</string>
+    <string name="txtLembrar">Lembrar</string>
+    <string name="txtRecuperarSenha">Recuperar Senha</string>
+    <string name="btnAcessar">Acessar</string>
+    <string name="btnSejaVip">Seja Vip</string>
+    <string name="txtVersaoApp">Versão V1.0</string>
 
-  <!-- Tela novo cliente vip -->
-  <string name="txtNovoVip">Novo Vip</string>
-  <string name="txtPrimeiroNome">Primeiro Nome</string>
-  <string name="txtSobrenome">Sobrenome</string>
-  <string name="txtHintSobrenome">Digite seu sobrenome...</string>
-  <string name="txtPessoaFisica">Pessoa FÍsica</string>
-  <string name="btnSalvarContinuar">SALVAR E CONTINUAR</string>
-  <string name="btnCancelar">CANCELAR</string>
-  <string name="txtCPF">CPF</string>
-  <string name="txtHintCPF">Digite seu CPF...</string>
-  <string name="txtNomeCompleto">Nome Completo</string>
-  <string name="txtHintNomeCompleto">Nome completo igual do CPF</string>
-  <string name="btnSalvarConcluir">SALVAR E CONCLUIR</string>
-  <string name="txtPessoaJuridica">Pessoa Jurídica</string>
-  <string name="txtCNPJ">CNPJ</string>
-  <string name="txtHintCNPJ">Digite seu CNPJ</string>
-  <string name="txtRazaoSocial">Razão Social</string>
-  <string name="txtHintRazaoSocial">Razão Social igual do cartão CNPJ</string>
-  <string name="txtDataAberturaEmpresa">Data de Abertura da Empresa</string>
-  <string name="txtHintDataAberturaEmpresa">dd/mm/aaaa</string>
-  <string name="txtSimplesNacional">Simples Nacional</string>
-  <string name="txtMEI">MEI</string>
-  <string name="btnRecuperar">Recuperar</string>
-  <string name="txtFinalizacaoCadastro">Credenciais de Acesso</string>
-  <string name="btnMeusDados">Meus Dados</string>
-  <string name="btnAtualizarMeusDados">Atualizar Meus Dados</string>
-  <string name="btnExcluirMinhaConta">Excluir Minha Conta</string>
-  <string name="btnConsultarClientesVip">Consultar Clientes Vip</string>
-  <string name="btnSairAplicativo">Sair do Aplicativo</string>
+    <!-- Tela novo cliente vip -->
+    <string name="txtNovoVip">Novo Vip</string>
+    <string name="txtPrimeiroNome">Primeiro Nome</string>
+    <string name="txtSobrenome">Sobrenome</string>
+    <string name="txtHintSobrenome">Digite seu sobrenome...</string>
+    <string name="txtPessoaFisica">Pessoa FÍsica</string>
+    <string name="btnSalvarContinuar">SALVAR E CONTINUAR</string>
+    <string name="btnCancelar">CANCELAR</string>
+    <string name="txtCPF">CPF</string>
+    <string name="txtHintCPF">Digite seu CPF...</string>
+    <string name="txtNomeCompleto">Nome Completo</string>
+    <string name="txtHintNomeCompleto">Nome completo igual do CPF</string>
+    <string name="btnSalvarConcluir">SALVAR E CONCLUIR</string>
+    <string name="txtPessoaJuridica">Pessoa Jurídica</string>
+    <string name="txtCNPJ">CNPJ</string>
+    <string name="txtHintCNPJ">Digite seu CNPJ</string>
+    <string name="txtRazaoSocial">Razão Social</string>
+    <string name="txtHintRazaoSocial">Razão Social igual do cartão CNPJ</string>
+    <string name="txtDataAberturaEmpresa">Data de Abertura da Empresa</string>
+    <string name="txtHintDataAberturaEmpresa">dd/mm/aaaa</string>
+    <string name="txtSimplesNacional">Simples Nacional</string>
+    <string name="txtMEI">MEI</string>
+    <string name="btnRecuperar">Recuperar</string>
+    <string name="txtFinalizacaoCadastro">Credenciais de Acesso</string>
+    <string name="btnMeusDados">Meus Dados</string>
+    <string name="btnAtualizarMeusDados">Atualizar Meus Dados</string>
+    <string name="btnExcluirMinhaConta">Excluir Minha Conta</string>
+    <string name="btnConsultarClientesVip">Consultar Clientes Vip</string>
+    <string name="btnSairAplicativo">Sair do Aplicativo</string>
 </resources>
