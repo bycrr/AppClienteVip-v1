@@ -1,6 +1,7 @@
-package br.com.bycrr.v1.appclientevip.model;
+package br.com.bycrr.v2.appclientevip.model;
 
-public class ClientePJ extends Cliente {
+public class ClientePJ extends ClientePF {
+  private int fk;
   private String cnpj;
   private String razaoSocial;
   private String dataAbertura;

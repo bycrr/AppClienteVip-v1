@@ -1,4 +1,4 @@
-package br.com.bycrr.v1.appclientevip.view;
+package br.com.bycrr.v2.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,15 +9,17 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.bycrr.v1.appclientevip.R;
-import br.com.bycrr.v1.appclientevip.api.ClienteAdapter;
-import br.com.bycrr.v1.appclientevip.model.Cliente;
+import br.com.bycrr.v2.appclientevip.R;
+import br.com.bycrr.v2.appclientevip.api.ClienteAdapter;
+import br.com.bycrr.v2.appclientevip.controller.ClienteController;
+import br.com.bycrr.v2.appclientevip.model.Cliente;
 
 public class ConsultarClientesActivity extends AppCompatActivity {
 
   List<Cliente> clientes;
   ClienteAdapter adapter;
   Cliente obj;
+  ClienteController controller;
   RecyclerView rvClientesVip;
 
   @Override
@@ -26,13 +28,14 @@ public class ConsultarClientesActivity extends AppCompatActivity {
     setContentView(R.layout.activity_consultar_clientes);
     rvClientesVip = findViewById(R.id.rvClientesVip);
     clientes = new ArrayList<>();
-
-    for (int i = 0; i < 50; i++) {
+    controller = new ClienteController(getApplicationContext());
+    clientes = controller.listar();
+    /*for (int i = 0; i < 50; i++) {
       obj = new Cliente();
       obj.setPrimeiroNome("Cliente " + i);
       obj.setPessoaFisica(i % 2==0);
       clientes.add(obj);
-    }
+    }*/
     adapter = new ClienteAdapter(clientes, getApplicationContext());
     rvClientesVip.setAdapter(adapter);
     rvClientesVip.setLayoutManager(new LinearLayoutManager(this));

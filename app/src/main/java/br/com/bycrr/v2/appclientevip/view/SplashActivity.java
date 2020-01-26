@@ -1,4 +1,4 @@
-package br.com.bycrr.v1.appclientevip.view;
+package br.com.bycrr.v2.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,13 +7,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import br.com.bycrr.v1.appclientevip.R;
-import br.com.bycrr.v1.appclientevip.api.AppUtil;
+import br.com.bycrr.v2.appclientevip.R;
+//import br.com.bycrr.v2.appclientevip.api.AppDataBase;
+import br.com.bycrr.v2.appclientevip.api.AppUtil;
 
 public class SplashActivity extends AppCompatActivity {
 
   private SharedPreferences preferences;
   boolean isLembrarSenha = false;
+  //AppDataBase dataBase;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
     setContentView(R.layout.activity_splash);
     //salvarSharedPreferences();
     restaurarSharedPreferences();
+    //dataBase = new AppDataBase(getApplicationContext());
     iniciarAplicativo();
   }
 

@@ -1,4 +1,4 @@
-package br.com.bycrr.v1.appclientevip.view;
+package br.com.bycrr.v2.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,17 +19,20 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.shashank.sony.fancydialoglib.Icon;
 
-import br.com.bycrr.v1.appclientevip.R;
-import br.com.bycrr.v1.appclientevip.api.AppUtil;
-import br.com.bycrr.v1.appclientevip.controller.ClienteController;
-import br.com.bycrr.v1.appclientevip.model.Cliente;
+import java.util.List;
+
+import br.com.bycrr.v2.appclientevip.R;
+import br.com.bycrr.v2.appclientevip.api.AppUtil;
+import br.com.bycrr.v2.appclientevip.controller.ClienteController;
+import br.com.bycrr.v2.appclientevip.model.Cliente;
 
 public class LoginActivity extends AppCompatActivity {
 
   // declarar objetos e variáveis
-  Cliente clienteSalvo;
+  Cliente clienteSalvo, cliente;
   boolean isFormularioOk, isLembrarSenha;
   private SharedPreferences preferences;
+  ClienteController controller;
 
   // criar variáveis de tela
   TextView txtRecuperarSenha, txtLerPolitica;
@@ -116,7 +119,8 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   private boolean validarDadosUsuario() {
-    return ClienteController.validarDadosCliente(clienteSalvo, editEmail.getText().toString(), editSenha.getText().toString());
+    //return ClienteController.validarDadosCliente(clienteSalvo, editEmail.getText().toString(), editSenha.getText().toString());
+    return true;
   }
 
   private boolean validarFormulario() {
@@ -146,6 +150,26 @@ public class LoginActivity extends AppCompatActivity {
     isFormularioOk = false;
     //clienteFake = ClienteController.getClienteFake();
     clienteSalvo = new Cliente();
+
+    controller = new ClienteController(getApplicationContext());
+    cliente = new Cliente();
+
+    /*for (int i = 0; i < 30; i++) {
+      //cliente.setId(1);
+      cliente.setPrimeiroNome("Nome " + i);
+      cliente.setSobrenome("Sobrenome " + i);
+      cliente.setEmail(i + "@teste.com");
+      cliente.setSenha(i + "123");
+      cliente.setPessoaFisica(false);
+      controller.incluir(cliente);
+    }*/
+    //controller.alterar(cliente);
+
+    cliente.setId(20);
+    controller.excluir(cliente);
+
+    //List<Cliente> clientes = controller.listar();
+
     restaurarSharedPreferences();
   }
 

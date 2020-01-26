@@ -1,4 +1,4 @@
-package br.com.bycrr.v1.appclientevip.model;
+package br.com.bycrr.v2.appclientevip.model;
 
 public class Cliente {
   private int id;
