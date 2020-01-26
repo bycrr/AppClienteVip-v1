@@ -1,4 +1,4 @@
-package br.com.bycrr.v2.appclientevip.view;
+package br.com.bycrr.v3.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,55 +18,58 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.shashank.sony.fancydialoglib.Icon;
 
-import br.com.bycrr.v2.appclientevip.R;
-import br.com.bycrr.v2.appclientevip.api.AppUtil;
-import br.com.bycrr.v2.appclientevip.model.Cliente;
+import br.com.bycrr.v3.appclientevip.R;
+import br.com.bycrr.v3.appclientevip.api.AppUtil;
+import br.com.bycrr.v3.appclientevip.model.Cliente;
+import br.com.bycrr.v3.appclientevip.model.ClientePJ;
 
-public class ClienteVipActivity extends AppCompatActivity {
+public class ClientePessoaJuridicaActivity extends AppCompatActivity {
 
   // declarar objetos e variáveis
   Cliente novoVip;
+  ClientePJ novoClientePJ;
   private SharedPreferences preferences;
-  boolean isFormularioOk, isPessoaFisica;
 
   // criar variáveis de tela
-  EditText editPrimeiroNome, editSobrenome;
-  CheckBox chPessoaFisica;
-  Button btnSalvarContinuar, btnCancelar;
+  EditText editCNPJ, editRazaoSocial, editDataAberturaEmpresa;
+  Button btnSalvarConcluir, btnVoltar, btnCancelar;
+  CheckBox chSimplesNacional, chMEI;
+  boolean isFormularioOk, isSimplesNacional, isMEI;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cliente_vip);
+    setContentView(R.layout.activity_cliente_pessoa_juridica);
     initFormulario();
 
-    btnSalvarContinuar.setOnClickListener(new View.OnClickListener() {
+    btnSalvarConcluir.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
 
         if(isFormularioOk = validarFormulario()) {
-          novoVip.setPrimeiroNome(editPrimeiroNome.getText().toString());
-          novoVip.setSobrenome(editSobrenome.getText().toString());
-          novoVip.setPessoaFisica(isPessoaFisica);
+          novoClientePJ.setCnpj(editCNPJ.getText().toString());
+          novoClientePJ.setRazaoSocial(editRazaoSocial.getText().toString());
+          novoClientePJ.setDataAbertura(editDataAberturaEmpresa.getText().toString());
+          novoClientePJ.setSimplesNacional(isSimplesNacional);
+          novoClientePJ.setMei(isMEI);
           salvarSharedPreferences();
-
-          //if(isPessoaFisica) {
-            // tela de cadastro do CPF
-            Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaFisicaActivity.class);
-            startActivity(intent);
-
-          /*} else {
-            // tela de cadastro do CNPJ
-            Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaJuridicaActivity.class);
-            startActivity(intent);
-          }*/
+          Intent intent = new Intent(ClientePessoaJuridicaActivity.this, CredencialAcessoActivity.class);
+          startActivity(intent);
         }
+      }
+    });
+
+    btnVoltar.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent(ClientePessoaJuridicaActivity.this, LoginActivity.class);
+        startActivity(intent);
       }
     });
     btnCancelar.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        new FancyAlertDialog.Builder(ClienteVipActivity.this)
+        new FancyAlertDialog.Builder(ClientePessoaJuridicaActivity.this)
           .setTitle("Confirme o Cancelamento")
           .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
           .setMessage("Deseja realmente cancelar?")
@@ -92,32 +95,42 @@ public class ClienteVipActivity extends AppCompatActivity {
           .build();
       }
     });
-
   }
 
   private boolean validarFormulario() {
     boolean retorno = true;
 
-    if(TextUtils.isEmpty((editPrimeiroNome.getText().toString()))) {
-      editPrimeiroNome.setError("*");
-      editPrimeiroNome.requestFocus();
+    if(TextUtils.isEmpty((editCNPJ.getText().toString()))) {
+      editCNPJ.setError("*");
+      editCNPJ.requestFocus();
       retorno = false;
     }
-    if(TextUtils.isEmpty(editSobrenome.getText().toString())) {
-      editSobrenome.setError("*");
-      editSobrenome.requestFocus();
+    if(TextUtils.isEmpty(editRazaoSocial.getText().toString())) {
+      editRazaoSocial.setError("*");
+      editRazaoSocial.requestFocus();
+      retorno = false;
+    }
+    if(TextUtils.isEmpty(editDataAberturaEmpresa.getText().toString())) {
+      editDataAberturaEmpresa.setError("*");
+      editDataAberturaEmpresa.requestFocus();
       retorno = false;
     }
     return retorno;
   }
 
   private void initFormulario() {
-    editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
-    editSobrenome = findViewById(R.id.editSobrenome);
-    chPessoaFisica = findViewById(R.id.ckPessoaFisica);
-    btnSalvarContinuar = findViewById(R.id.btnSalvarContinuar);
+    editCNPJ = findViewById(R.id.editCNPJ);
+    editRazaoSocial = findViewById(R.id.editRazaoSocial);
+    editDataAberturaEmpresa = findViewById(R.id.editDataAberturaEmpresa);
+    chSimplesNacional = findViewById(R.id.ckSimplesNacional);
+    chMEI = findViewById(R.id.ckMEI);
+    btnSalvarConcluir = findViewById(R.id.btnSalvarConcluir);
     btnCancelar = findViewById(R.id.btnCancelar);
+    btnVoltar = findViewById(R.id.btnVoltar);
     isFormularioOk = false;
+    isSimplesNacional = false;
+    isMEI = false;
+    novoClientePJ = new ClientePJ();
     novoVip = new Cliente();
     restaurarSharedPreferences();
   }
@@ -125,9 +138,11 @@ public class ClienteVipActivity extends AppCompatActivity {
   private void salvarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     SharedPreferences.Editor dados = preferences.edit();
-    dados.putString("primeiroNome", novoVip.getPrimeiroNome().toString());
-    dados.putString("sobrenome", novoVip.getSobrenome().toString());
-    dados.putBoolean("pessoaFisica", novoVip.getPessoaFisica());
+    dados.putString("cnpj", editCNPJ.getText().toString());
+    dados.putString("dataAberturaEmpresa", editDataAberturaEmpresa.getText().toString());
+    dados.putString("razaoSocial", editRazaoSocial.getText().toString());
+    dados.putBoolean("simplesNacional", isSimplesNacional);
+    dados.putBoolean("mei", isMEI);
     dados.apply();
   }
 
@@ -135,8 +150,11 @@ public class ClienteVipActivity extends AppCompatActivity {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     //isPessoaFisica = preferences.getBoolean("pessoaFisica", false);
   }
+  public void simplesNacional(View view) {
+    isSimplesNacional = chSimplesNacional.isChecked();
+  }
 
-  public void pessoaFisica(View view) {
-      isPessoaFisica = chPessoaFisica.isChecked();
+  public void MEI(View view) {
+    isMEI = chMEI.isChecked();
   }
 }

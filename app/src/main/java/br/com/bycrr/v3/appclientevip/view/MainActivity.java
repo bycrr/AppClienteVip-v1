@@ -1,4 +1,4 @@
-package br.com.bycrr.v2.appclientevip.view;
+package br.com.bycrr.v3.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -18,11 +18,11 @@ import com.shashank.sony.fancydialoglib.Icon;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.bycrr.v2.appclientevip.R;
-import br.com.bycrr.v2.appclientevip.api.AppUtil;
-import br.com.bycrr.v2.appclientevip.model.Cliente;
-import br.com.bycrr.v2.appclientevip.model.ClientePF;
-import br.com.bycrr.v2.appclientevip.model.ClientePJ;
+import br.com.bycrr.v3.appclientevip.R;
+import br.com.bycrr.v3.appclientevip.api.AppUtil;
+import br.com.bycrr.v3.appclientevip.model.Cliente;
+import br.com.bycrr.v3.appclientevip.model.ClientePF;
+import br.com.bycrr.v3.appclientevip.model.ClientePJ;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package br.com.bycrr.v2.appclientevip.api;
+package br.com.bycrr.v3.appclientevip.api;
 
 import java.util.Calendar;
 

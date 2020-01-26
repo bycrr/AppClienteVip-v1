@@ -1,4 +1,4 @@
-package br.com.bycrr.v2.appclientevip.api;
+package br.com.bycrr.v3.appclientevip.api;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import br.com.bycrr.v2.appclientevip.R;
-import br.com.bycrr.v2.appclientevip.model.Cliente;
+import br.com.bycrr.v3.appclientevip.R;
+import br.com.bycrr.v3.appclientevip.model.Cliente;
 
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHolder> {
 

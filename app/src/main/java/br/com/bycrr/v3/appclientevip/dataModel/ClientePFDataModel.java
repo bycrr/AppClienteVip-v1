@@ -1,4 +1,4 @@
-package br.com.bycrr.v2.appclientevip.dataModel;
+package br.com.bycrr.v3.appclientevip.dataModel;
 
 // MOR - Modelo Objeto Relacional
 

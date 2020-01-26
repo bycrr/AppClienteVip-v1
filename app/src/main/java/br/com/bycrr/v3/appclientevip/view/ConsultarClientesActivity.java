@@ -1,4 +1,4 @@
-package br.com.bycrr.v2.appclientevip.view;
+package br.com.bycrr.v3.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,10 +9,10 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.bycrr.v2.appclientevip.R;
-import br.com.bycrr.v2.appclientevip.api.ClienteAdapter;
-import br.com.bycrr.v2.appclientevip.controller.ClienteController;
-import br.com.bycrr.v2.appclientevip.model.Cliente;
+import br.com.bycrr.v3.appclientevip.R;
+import br.com.bycrr.v3.appclientevip.api.ClienteAdapter;
+import br.com.bycrr.v3.appclientevip.controller.ClienteController;
+import br.com.bycrr.v3.appclientevip.model.Cliente;
 
 public class ConsultarClientesActivity extends AppCompatActivity {
 
