@@ -11,13 +11,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/*import com.bumptech.glide.Glide;*/
 import com.shashank.sony.fancydialoglib.Animation;
 import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.shashank.sony.fancydialoglib.Icon;
+import com.squareup.picasso.Picasso;
 
 import br.com.bycrr.v3.appclientevip.R;
 import br.com.bycrr.v3.appclientevip.api.AppUtil;
@@ -33,16 +36,19 @@ public class LoginActivity extends AppCompatActivity {
   ClienteController controller;
 
   // criar variáveis de tela
-  TextView txtRecuperarSenha, txtLerPolitica;
+  TextView txtRecuperarSenha, txtLerPolitica, btnSejaVip;
   EditText editEmail, editSenha;
   CheckBox chLembrar;
-  Button btnAcessar, btnSejaVip;
+  Button btnAcessar; //btnSejaVip;
+  ImageView imgBackground, imgLogo;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_login);
+    //setContentView(R.layout.activity_login);
+    setContentView(R.layout.activity_login_novo);
     initFormulario();
+    loadImagens();
 
     btnAcessar.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -64,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         }
       }
     });
+
     btnSejaVip.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -73,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         return;
       }
     });
+
     txtRecuperarSenha.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -116,6 +124,21 @@ public class LoginActivity extends AppCompatActivity {
     });
   }
 
+  private void loadImagens() {
+    Picasso.with(this).setLoggingEnabled(true);
+
+    Picasso.with(this).load(AppUtil.URL_IMG_BACKGROUND).into(imgBackground);
+    /*Picasso.get().load(AppUtil.URL_IMG_BACKGROUND).into(imgBackground);*/
+    //Picasso.with(this).load(AppUtil.URL_IMG_BACKGROUND).fit().into(imgBackground);
+    /*Picasso.with(this).load(AppUtil.URL_IMG_BACKGROUND).resize(256, 256).centerCrop().into(imgBackground);*/
+    /*Picasso.with(this).load(AppUtil.URL_IMG_BACKGROUND).resize(256, 256).into(imgBackground);*/
+    /*Glide.with(this).load(AppUtil.URL_IMG_BACKGROUND).into(imgBackground);*/
+
+    Picasso.with(this).load(AppUtil.URL_IMG_LOGO).into(imgLogo);
+    /*Picasso.get().load(AppUtil.URL_IMG_LOGO).into(imgLogo);*/
+    /*Picasso.with(this).load(AppUtil.URL_IMG_LOGO).fit().into(imgLogo);*/
+  }
+
   private boolean validarDadosUsuario() {
     //return ClienteController.validarDadosCliente(clienteSalvo, editEmail.getText().toString(), editSenha.getText().toString());
     return true;
@@ -145,12 +168,14 @@ public class LoginActivity extends AppCompatActivity {
     chLembrar = findViewById(R.id.ckLembrar);
     btnAcessar = findViewById(R.id.btnAcessar);
     btnSejaVip = findViewById(R.id.btnSejaVip);
+    imgBackground = findViewById(R.id.imgBackground);
+    imgLogo = findViewById(R.id.imgLogo);
     isFormularioOk = false;
     //clienteFake = ClienteController.getClienteFake();
     clienteSalvo = new Cliente();
 
-    controller = new ClienteController(getApplicationContext());
-    cliente = new Cliente();
+    //controller = new ClienteController(getApplicationContext());
+    //cliente = new Cliente();
 
     /*for (int i = 0; i < 30; i++) {
       //cliente.setId(1);
@@ -163,8 +188,8 @@ public class LoginActivity extends AppCompatActivity {
     }*/
     //controller.alterar(cliente);
 
-    cliente.setId(20);
-    controller.excluir(cliente);
+    //cliente.setId(20);
+    //controller.excluir(cliente);
 
     //List<Cliente> clientes = controller.listar();
 

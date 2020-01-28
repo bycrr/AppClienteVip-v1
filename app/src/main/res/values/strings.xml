@@ -57,5 +57,5 @@
   <string name="btnSairAplicativo">Sair do Aplicativo</string>
   <string name="txtConsultarClientesVip">Consultar Clientes VIP</string>
   <string name="txtCliente">Cliente</string>
-  <string name="txtTermosPolitica"><![CDATA[Ler Política de Privacidade &amp; Termos de Uso]]></string>
+  <string name="txtTermosPolitica"><![CDATA[Ler Política de Privacidade & Termos de Uso]]></string>
 </resources>
