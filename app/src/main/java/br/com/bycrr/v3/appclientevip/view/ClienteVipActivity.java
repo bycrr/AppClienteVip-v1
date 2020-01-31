@@ -37,7 +37,7 @@ public class ClienteVipActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cliente_vip);
+    setContentView(R.layout.activity_cliente_vip_card);
     initFormulario();
 
     btnSalvarContinuar.setOnClickListener(new View.OnClickListener() {
