@@ -126,17 +126,8 @@ public class LoginActivity extends AppCompatActivity {
 
   private void loadImagens() {
     Picasso.with(this).setLoggingEnabled(true);
-
-    Picasso.with(this).load(AppUtil.URL_IMG_BACKGROUND).into(imgBackground);
-    /*Picasso.get().load(AppUtil.URL_IMG_BACKGROUND).into(imgBackground);*/
-    //Picasso.with(this).load(AppUtil.URL_IMG_BACKGROUND).fit().into(imgBackground);
-    /*Picasso.with(this).load(AppUtil.URL_IMG_BACKGROUND).resize(256, 256).centerCrop().into(imgBackground);*/
-    /*Picasso.with(this).load(AppUtil.URL_IMG_BACKGROUND).resize(256, 256).into(imgBackground);*/
-    /*Glide.with(this).load(AppUtil.URL_IMG_BACKGROUND).into(imgBackground);*/
-
-    Picasso.with(this).load(AppUtil.URL_IMG_LOGO).into(imgLogo);
-    /*Picasso.get().load(AppUtil.URL_IMG_LOGO).into(imgLogo);*/
-    /*Picasso.with(this).load(AppUtil.URL_IMG_LOGO).fit().into(imgLogo);*/
+    Picasso.with(this).load(AppUtil.URL_IMG_BACKGROUND).placeholder(R.drawable.carregando_animacao).into(imgBackground);
+    Picasso.with(this).load(AppUtil.URL_IMG_LOGO).placeholder(R.drawable.carregando_animacao).into(imgLogo);
   }
 
   private boolean validarDadosUsuario() {
