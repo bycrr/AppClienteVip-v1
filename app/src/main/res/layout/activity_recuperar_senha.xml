@@ -46,7 +46,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:ems="10"
-    android:hint="Digite o e-mail cadastrado..." />
+    android:hint="@string/txtHintEmail" />
 
   <Button
     android:id="@+id/btnRecuperar"

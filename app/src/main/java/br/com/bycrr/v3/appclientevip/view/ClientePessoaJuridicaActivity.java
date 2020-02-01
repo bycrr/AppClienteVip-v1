@@ -31,25 +31,25 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
   private SharedPreferences preferences;
 
   // criar variáveis de tela
-  EditText editCNPJ, editRazaoSocial, editDataAberturaEmpresa;
-  Button btnSalvarConcluir, btnVoltar, btnCancelar;
+  EditText editCNPJ, editRazaoSocial, editDataAberturaPJ;
+  Button btnSalvarContinuar, btnVoltar, btnCancelar;
   CheckBox chSimplesNacional, chMEI;
   boolean isFormularioOk, isSimplesNacional, isMEI;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cliente_pessoa_juridica);
+    setContentView(R.layout.activity_cliente_pessoa_juridica_card);
     initFormulario();
 
-    btnSalvarConcluir.setOnClickListener(new View.OnClickListener() {
+    btnSalvarContinuar.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
 
         if(isFormularioOk = validarFormulario()) {
           novoClientePJ.setCnpj(editCNPJ.getText().toString());
           novoClientePJ.setRazaoSocial(editRazaoSocial.getText().toString());
-          novoClientePJ.setDataAbertura(editDataAberturaEmpresa.getText().toString());
+          novoClientePJ.setDataAbertura(editDataAberturaPJ.getText().toString());
           novoClientePJ.setSimplesNacional(isSimplesNacional);
           novoClientePJ.setMei(isMEI);
           salvarSharedPreferences();
@@ -110,9 +110,9 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
       editRazaoSocial.requestFocus();
       retorno = false;
     }
-    if(TextUtils.isEmpty(editDataAberturaEmpresa.getText().toString())) {
-      editDataAberturaEmpresa.setError("*");
-      editDataAberturaEmpresa.requestFocus();
+    if(TextUtils.isEmpty(editDataAberturaPJ.getText().toString())) {
+      editDataAberturaPJ.setError("*");
+      editDataAberturaPJ.requestFocus();
       retorno = false;
     }
     return retorno;
@@ -121,10 +121,10 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
   private void initFormulario() {
     editCNPJ = findViewById(R.id.editCNPJ);
     editRazaoSocial = findViewById(R.id.editRazaoSocial);
-    editDataAberturaEmpresa = findViewById(R.id.editDataAberturaEmpresa);
-    chSimplesNacional = findViewById(R.id.ckSimplesNacional);
-    chMEI = findViewById(R.id.ckMEI);
-    btnSalvarConcluir = findViewById(R.id.btnSalvarConcluir);
+    editDataAberturaPJ = findViewById(R.id.editDataAberturaPJ);
+    chSimplesNacional = findViewById(R.id.chSimplesNacional);
+    chMEI = findViewById(R.id.chMEI);
+    btnSalvarContinuar = findViewById(R.id.btnSalvarContinuar);
     btnCancelar = findViewById(R.id.btnCancelar);
     btnVoltar = findViewById(R.id.btnVoltar);
     isFormularioOk = false;
@@ -139,7 +139,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     SharedPreferences.Editor dados = preferences.edit();
     dados.putString("cnpj", editCNPJ.getText().toString());
-    dados.putString("dataAberturaEmpresa", editDataAberturaEmpresa.getText().toString());
+    dados.putString("dataAberturaEmpresa", editDataAberturaPJ.getText().toString());
     dados.putString("razaoSocial", editRazaoSocial.getText().toString());
     dados.putBoolean("simplesNacional", isSimplesNacional);
     dados.putBoolean("mei", isMEI);

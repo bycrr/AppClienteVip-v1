@@ -37,7 +37,7 @@ public class CredencialAcessoActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_credencial_acesso);
+    setContentView(R.layout.activity_cadastro_usuario_card);
 
     // inicializar o formuário
     initFormulario();
