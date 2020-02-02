@@ -1,9 +1,26 @@
-package br.com.bycrr.v3.appclientevip.model;
+package br.com.bycrr.v4.appclientevip.model;
 
 public class ClientePF extends Cliente {
-  private int fk;
+  private int ID;
+  private int clienteID;
   private String cpf;
   private String nomeCompleto;
+
+  public int getID() {
+    return ID;
+  }
+
+  public void setID(int ID) {
+    this.ID = ID;
+  }
+
+  public int getClienteID() {
+    return clienteID;
+  }
+
+  public void setClienteID(int clienteID) {
+    this.clienteID = clienteID;
+  }
 
   public String getCpf() {
     return cpf;

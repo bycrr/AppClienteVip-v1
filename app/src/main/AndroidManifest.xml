@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="br.com.bycrr.v3.appclientevip">
+  package="br.com.bycrr.v4.appclientevip">
   <uses-permission android:name="android.permission.INTERNET" />
 
   <application
@@ -12,15 +12,15 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name="br.com.bycrr.v3.appclientevip.view.ConsultarClientesActivity"/>
-    <activity android:name="br.com.bycrr.v3.appclientevip.view.RecuperarSenhaActivity" />
-    <activity android:name="br.com.bycrr.v3.appclientevip.view.ClientePessoaJuridicaActivity" />
-    <activity android:name="br.com.bycrr.v3.appclientevip.view.ClientePessoaFisicaActivity" />
-    <activity android:name="br.com.bycrr.v3.appclientevip.view.ClienteVipActivity" />
-    <activity android:name="br.com.bycrr.v3.appclientevip.view.LoginActivity" />
-    <activity android:name="br.com.bycrr.v3.appclientevip.view.MainActivity" />
-    <activity android:name="br.com.bycrr.v3.appclientevip.view.CredencialAcessoActivity" />
-    <activity android:name="br.com.bycrr.v3.appclientevip.view.SplashActivity">
+    <activity android:name="br.com.bycrr.v4.appclientevip.view.ConsultarClientesActivity"/>
+    <activity android:name="br.com.bycrr.v4.appclientevip.view.RecuperarSenhaActivity" />
+    <activity android:name="br.com.bycrr.v4.appclientevip.view.ClientePessoaJuridicaActivity" />
+    <activity android:name="br.com.bycrr.v4.appclientevip.view.ClientePessoaFisicaActivity" />
+    <activity android:name="br.com.bycrr.v4.appclientevip.view.ClienteVipActivity" />
+    <activity android:name="br.com.bycrr.v4.appclientevip.view.LoginActivity" />
+    <activity android:name="br.com.bycrr.v4.appclientevip.view.MainActivity" />
+    <activity android:name="br.com.bycrr.v4.appclientevip.view.CredencialAcessoActivity" />
+    <activity android:name="br.com.bycrr.v4.appclientevip.view.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

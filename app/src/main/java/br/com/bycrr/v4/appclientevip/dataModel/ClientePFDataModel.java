@@ -1,4 +1,4 @@
-package br.com.bycrr.v3.appclientevip.dataModel;
+package br.com.bycrr.v4.appclientevip.dataModel;
 
 // MOR - Modelo Objeto Relacional
 
@@ -8,11 +8,11 @@ public class ClientePFDataModel {
    *   private String cpf;
    *   private String nomeCompleto;
    */
-  private static final String TABELA = "clientePF";
-  private static final String ID = "id";
-  private static final String FK = "clienteID";
-  private static final String CPF = "cpf";
-  private static final String NOME_COMPLETO = "nomeCompleto";
+  public static final String TABELA = "clientePF";
+  public static final String ID = "id";
+  public static final String FK = "clienteID";
+  public static final String CPF = "cpf";
+  public static final String NOME_COMPLETO = "nomeCompleto";
   private static final String DATA_INCLUSAO = "dataInclusao";
   private static final String DATA_ALTERACAO = "dataAlteracao";
   private static String query;

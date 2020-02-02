@@ -1,4 +1,4 @@
-package br.com.bycrr.v3.appclientevip.controller;
+package br.com.bycrr.v4.appclientevip.controller;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,9 +7,9 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-import br.com.bycrr.v3.appclientevip.api.AppDataBase;
-import br.com.bycrr.v3.appclientevip.dataModel.ClienteDataModel;
-import br.com.bycrr.v3.appclientevip.model.Cliente;
+import br.com.bycrr.v4.appclientevip.api.AppDataBase;
+import br.com.bycrr.v4.appclientevip.dataModel.ClienteDataModel;
+import br.com.bycrr.v4.appclientevip.model.Cliente;
 
 public class ClienteController extends AppDataBase {
 
@@ -46,8 +46,11 @@ public class ClienteController extends AppDataBase {
   }
 
   public List<Cliente> listar() {
+    return listClientes(TABELA);
+  }
 
-    return list(TABELA);
+  public int getUltimoId() {
+    return getLastPK(TABELA);
   }
 
   /*public static boolean validarDadosCliente(Cliente cliente, String email, String senha) {

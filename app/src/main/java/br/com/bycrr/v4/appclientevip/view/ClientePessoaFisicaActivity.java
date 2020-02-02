@@ -1,4 +1,4 @@
-package br.com.bycrr.v3.appclientevip.view;
+package br.com.bycrr.v4.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,28 +17,30 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.shashank.sony.fancydialoglib.Icon;
 
-import br.com.bycrr.v3.appclientevip.R;
-import br.com.bycrr.v3.appclientevip.api.AppUtil;
-import br.com.bycrr.v3.appclientevip.model.Cliente;
-import br.com.bycrr.v3.appclientevip.model.ClientePJ;
+import br.com.bycrr.v4.appclientevip.R;
+import br.com.bycrr.v4.appclientevip.api.AppUtil;
+import br.com.bycrr.v4.appclientevip.controller.ClientePFController;
+import br.com.bycrr.v4.appclientevip.model.Cliente;
+import br.com.bycrr.v4.appclientevip.model.ClientePF;
 
-public class ClientePessoaJuridicaActivity extends AppCompatActivity {
+public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
   // declarar objetos e variáveis
   Cliente novoVip;
-  ClientePJ novoClientePJ;
+  ClientePF novoClientePF;
+  ClientePFController clientePFController;
   private SharedPreferences preferences;
 
   // criar variáveis de tela
-  EditText editCNPJ, editRazaoSocial, editDataAberturaPJ;
+  EditText editCPF, editNomeCompleto;
   Button btnSalvarContinuar, btnVoltar, btnCancelar;
-  CheckBox chSimplesNacional, chMEI;
-  boolean isFormularioOk, isSimplesNacional, isMEI;
+  boolean isFormularioOk, isPessoaFisica;
+  int clienteID, ultimoIDClientePF;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cliente_pessoa_juridica_card);
+    setContentView(R.layout.activity_cliente_pessoa_fisica_card);
     initFormulario();
 
     btnSalvarContinuar.setOnClickListener(new View.OnClickListener() {
@@ -47,29 +48,35 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
       public void onClick(View v) {
 
         if(isFormularioOk = validarFormulario()) {
-          novoClientePJ.setCnpj(editCNPJ.getText().toString());
-          novoClientePJ.setRazaoSocial(editRazaoSocial.getText().toString());
-          novoClientePJ.setDataAbertura(editDataAberturaPJ.getText().toString());
-          novoClientePJ.setSimplesNacional(isSimplesNacional);
-          novoClientePJ.setMei(isMEI);
+          novoClientePF.setCpf(editCPF.getText().toString());
+          novoClientePF.setNomeCompleto(editNomeCompleto.getText().toString());
+          novoClientePF.setClienteID(clienteID);
+          clientePFController.incluir(novoClientePF);
+          ultimoIDClientePF = clientePFController.getUltimoId();
           salvarSharedPreferences();
-          Intent intent = new Intent(ClientePessoaJuridicaActivity.this, CredencialAcessoActivity.class);
+          Intent intent;
+
+          if(isPessoaFisica) {
+            intent = new Intent(ClientePessoaFisicaActivity.this, CredencialAcessoActivity.class);
+
+          } else {
+            intent = new Intent(ClientePessoaFisicaActivity.this, ClientePessoaJuridicaActivity.class);
+          }
           startActivity(intent);
         }
       }
     });
-
     btnVoltar.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent intent = new Intent(ClientePessoaJuridicaActivity.this, LoginActivity.class);
+        Intent intent = new Intent(ClientePessoaFisicaActivity.this, LoginActivity.class);
         startActivity(intent);
       }
     });
     btnCancelar.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        new FancyAlertDialog.Builder(ClientePessoaJuridicaActivity.this)
+        new FancyAlertDialog.Builder(ClientePessoaFisicaActivity.this)
           .setTitle("Confirme o Cancelamento")
           .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
           .setMessage("Deseja realmente cancelar?")
@@ -100,61 +107,44 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
   private boolean validarFormulario() {
     boolean retorno = true;
 
-    if(TextUtils.isEmpty((editCNPJ.getText().toString()))) {
-      editCNPJ.setError("*");
-      editCNPJ.requestFocus();
+    if(TextUtils.isEmpty((editCPF.getText().toString()))) {
+      editCPF.setError("*");
+      editCPF.requestFocus();
       retorno = false;
     }
-    if(TextUtils.isEmpty(editRazaoSocial.getText().toString())) {
-      editRazaoSocial.setError("*");
-      editRazaoSocial.requestFocus();
-      retorno = false;
-    }
-    if(TextUtils.isEmpty(editDataAberturaPJ.getText().toString())) {
-      editDataAberturaPJ.setError("*");
-      editDataAberturaPJ.requestFocus();
+    if(TextUtils.isEmpty(editNomeCompleto.getText().toString())) {
+      editNomeCompleto.setError("*");
+      editNomeCompleto.requestFocus();
       retorno = false;
     }
     return retorno;
   }
 
   private void initFormulario() {
-    editCNPJ = findViewById(R.id.editCNPJ);
-    editRazaoSocial = findViewById(R.id.editRazaoSocial);
-    editDataAberturaPJ = findViewById(R.id.editDataAberturaPJ);
-    chSimplesNacional = findViewById(R.id.chSimplesNacional);
-    chMEI = findViewById(R.id.chMEI);
+    editCPF = findViewById(R.id.editCPF);
+    editNomeCompleto = findViewById(R.id.editNomeCompleto);
     btnSalvarContinuar = findViewById(R.id.btnSalvarContinuar);
     btnCancelar = findViewById(R.id.btnCancelar);
     btnVoltar = findViewById(R.id.btnVoltar);
     isFormularioOk = false;
-    isSimplesNacional = false;
-    isMEI = false;
-    novoClientePJ = new ClientePJ();
+    novoClientePF = new ClientePF();
     novoVip = new Cliente();
+    clientePFController = new ClientePFController(this);
     restaurarSharedPreferences();
   }
 
   private void salvarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     SharedPreferences.Editor dados = preferences.edit();
-    dados.putString("cnpj", editCNPJ.getText().toString());
-    dados.putString("dataAberturaEmpresa", editDataAberturaPJ.getText().toString());
-    dados.putString("razaoSocial", editRazaoSocial.getText().toString());
-    dados.putBoolean("simplesNacional", isSimplesNacional);
-    dados.putBoolean("mei", isMEI);
+    dados.putString("cpf", editCPF.getText().toString());
+    dados.putString("nomeCompleto", editNomeCompleto.getText().toString());
+    dados.putInt("ultimoIDClientePF", ultimoIDClientePF);
     dados.apply();
   }
 
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
-    //isPessoaFisica = preferences.getBoolean("pessoaFisica", false);
-  }
-  public void simplesNacional(View view) {
-    isSimplesNacional = chSimplesNacional.isChecked();
-  }
-
-  public void MEI(View view) {
-    isMEI = chMEI.isChecked();
+    isPessoaFisica = preferences.getBoolean("pessoaFisica", true);
+    clienteID = preferences.getInt("ultimoID", 0);
   }
 }

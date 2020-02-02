@@ -1,4 +1,4 @@
-package br.com.bycrr.v3.appclientevip.view;
+package br.com.bycrr.v4.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,27 +18,28 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.shashank.sony.fancydialoglib.Icon;
 
-import br.com.bycrr.v3.appclientevip.R;
-import br.com.bycrr.v3.appclientevip.api.AppUtil;
-import br.com.bycrr.v3.appclientevip.model.Cliente;
-import br.com.bycrr.v3.appclientevip.model.ClientePF;
+import br.com.bycrr.v4.appclientevip.R;
+import br.com.bycrr.v4.appclientevip.api.AppUtil;
+import br.com.bycrr.v4.appclientevip.model.Cliente;
+import br.com.bycrr.v4.appclientevip.model.ClientePJ;
 
-public class ClientePessoaFisicaActivity extends AppCompatActivity {
+public class ClientePessoaJuridicaActivity extends AppCompatActivity {
 
   // declarar objetos e variáveis
   Cliente novoVip;
-  ClientePF novoClientePF;
+  ClientePJ novoClientePJ;
   private SharedPreferences preferences;
 
   // criar variáveis de tela
-  EditText editCPF, editNomeCompleto;
+  EditText editCNPJ, editRazaoSocial, editDataAberturaPJ;
   Button btnSalvarContinuar, btnVoltar, btnCancelar;
-  boolean isFormularioOk, isPessoaFisica;
+  CheckBox chSimplesNacional, chMEI;
+  boolean isFormularioOk, isSimplesNacional, isMEI;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cliente_pessoa_fisica_card);
+    setContentView(R.layout.activity_cliente_pessoa_juridica_card);
     initFormulario();
 
     btnSalvarContinuar.setOnClickListener(new View.OnClickListener() {
@@ -45,32 +47,29 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
       public void onClick(View v) {
 
         if(isFormularioOk = validarFormulario()) {
-          novoClientePF.setCpf(editCPF.getText().toString());
-          novoClientePF.setNomeCompleto(editNomeCompleto.getText().toString());
+          novoClientePJ.setCnpj(editCNPJ.getText().toString());
+          novoClientePJ.setRazaoSocial(editRazaoSocial.getText().toString());
+          novoClientePJ.setDataAbertura(editDataAberturaPJ.getText().toString());
+          novoClientePJ.setSimplesNacional(isSimplesNacional);
+          novoClientePJ.setMei(isMEI);
           salvarSharedPreferences();
-          Intent intent;
-
-          if(isPessoaFisica) {
-            intent = new Intent(ClientePessoaFisicaActivity.this, CredencialAcessoActivity.class);
-
-          } else {
-            intent = new Intent(ClientePessoaFisicaActivity.this, ClientePessoaJuridicaActivity.class);
-          }
+          Intent intent = new Intent(ClientePessoaJuridicaActivity.this, CredencialAcessoActivity.class);
           startActivity(intent);
         }
       }
     });
+
     btnVoltar.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent intent = new Intent(ClientePessoaFisicaActivity.this, LoginActivity.class);
+        Intent intent = new Intent(ClientePessoaJuridicaActivity.this, LoginActivity.class);
         startActivity(intent);
       }
     });
     btnCancelar.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        new FancyAlertDialog.Builder(ClientePessoaFisicaActivity.this)
+        new FancyAlertDialog.Builder(ClientePessoaJuridicaActivity.this)
           .setTitle("Confirme o Cancelamento")
           .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
           .setMessage("Deseja realmente cancelar?")
@@ -101,27 +100,37 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
   private boolean validarFormulario() {
     boolean retorno = true;
 
-    if(TextUtils.isEmpty((editCPF.getText().toString()))) {
-      editCPF.setError("*");
-      editCPF.requestFocus();
+    if(TextUtils.isEmpty((editCNPJ.getText().toString()))) {
+      editCNPJ.setError("*");
+      editCNPJ.requestFocus();
       retorno = false;
     }
-    if(TextUtils.isEmpty(editNomeCompleto.getText().toString())) {
-      editNomeCompleto.setError("*");
-      editNomeCompleto.requestFocus();
+    if(TextUtils.isEmpty(editRazaoSocial.getText().toString())) {
+      editRazaoSocial.setError("*");
+      editRazaoSocial.requestFocus();
+      retorno = false;
+    }
+    if(TextUtils.isEmpty(editDataAberturaPJ.getText().toString())) {
+      editDataAberturaPJ.setError("*");
+      editDataAberturaPJ.requestFocus();
       retorno = false;
     }
     return retorno;
   }
 
   private void initFormulario() {
-    editCPF = findViewById(R.id.editCPF);
-    editNomeCompleto = findViewById(R.id.editNomeCompleto);
+    editCNPJ = findViewById(R.id.editCNPJ);
+    editRazaoSocial = findViewById(R.id.editRazaoSocial);
+    editDataAberturaPJ = findViewById(R.id.editDataAberturaPJ);
+    chSimplesNacional = findViewById(R.id.chSimplesNacional);
+    chMEI = findViewById(R.id.chMEI);
     btnSalvarContinuar = findViewById(R.id.btnSalvarContinuar);
     btnCancelar = findViewById(R.id.btnCancelar);
     btnVoltar = findViewById(R.id.btnVoltar);
     isFormularioOk = false;
-    novoClientePF = new ClientePF();
+    isSimplesNacional = false;
+    isMEI = false;
+    novoClientePJ = new ClientePJ();
     novoVip = new Cliente();
     restaurarSharedPreferences();
   }
@@ -129,13 +138,23 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
   private void salvarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     SharedPreferences.Editor dados = preferences.edit();
-    dados.putString("cpf", editCPF.getText().toString());
-    dados.putString("nomeCompleto", editNomeCompleto.getText().toString());
+    dados.putString("cnpj", editCNPJ.getText().toString());
+    dados.putString("dataAberturaEmpresa", editDataAberturaPJ.getText().toString());
+    dados.putString("razaoSocial", editRazaoSocial.getText().toString());
+    dados.putBoolean("simplesNacional", isSimplesNacional);
+    dados.putBoolean("mei", isMEI);
     dados.apply();
   }
 
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
-    isPessoaFisica = preferences.getBoolean("pessoaFisica", true);
+    //isPessoaFisica = preferences.getBoolean("pessoaFisica", false);
+  }
+  public void simplesNacional(View view) {
+    isSimplesNacional = chSimplesNacional.isChecked();
+  }
+
+  public void MEI(View view) {
+    isMEI = chMEI.isChecked();
   }
 }

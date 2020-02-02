@@ -1,4 +1,4 @@
-package br.com.bycrr.v3.appclientevip.api;
+package br.com.bycrr.v4.appclientevip.api;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,10 +13,11 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.bycrr.v3.appclientevip.dataModel.ClienteDataModel;
-import br.com.bycrr.v3.appclientevip.dataModel.ClientePFDataModel;
-import br.com.bycrr.v3.appclientevip.dataModel.ClientePJDataModel;
-import br.com.bycrr.v3.appclientevip.model.Cliente;
+import br.com.bycrr.v4.appclientevip.dataModel.ClienteDataModel;
+import br.com.bycrr.v4.appclientevip.dataModel.ClientePFDataModel;
+import br.com.bycrr.v4.appclientevip.dataModel.ClientePJDataModel;
+import br.com.bycrr.v4.appclientevip.model.Cliente;
+import br.com.bycrr.v4.appclientevip.model.ClientePF;
 
 public class AppDataBase extends SQLiteOpenHelper {
 
@@ -115,7 +116,7 @@ public class AppDataBase extends SQLiteOpenHelper {
     return sucesso;
   }
 
-  public List<Cliente> list(String tabela) {
+  public List<Cliente> listClientes(String tabela) {
     List<Cliente> listClientes = new ArrayList<>();
     Cliente cliente;
     // select no DB
@@ -142,5 +143,49 @@ public class AppDataBase extends SQLiteOpenHelper {
       Log.e(AppUtil.LOG_APP, "Erro no list da " + tabela + ": " + e.getMessage());
     }
     return listClientes;
+  }
+
+  public List<ClientePF> listClientesPF(String tabela) {
+    List<ClientePF> listClientes = new ArrayList<>();
+    ClientePF clientePF;
+    String sql = "SELECT * FROM " + tabela;
+
+    try {
+      cursor = db.rawQuery(sql, null);
+
+      if (cursor.moveToFirst()) {
+        do {
+          clientePF = new ClientePF();
+          clientePF.setId(cursor.getInt(cursor.getColumnIndex(ClientePFDataModel.ID)));
+          clientePF.setClienteID(cursor.getInt(cursor.getColumnIndex(ClientePFDataModel.FK)));
+          clientePF.setNomeCompleto(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.NOME_COMPLETO)));
+          clientePF.setCpf(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.CPF)));
+          listClientes.add(clientePF);
+        } while (cursor.moveToNext());
+
+        Log.i(AppUtil.LOG_APP, "List ok na " + tabela);
+      }
+    } catch (SQLException e) {
+      Log.e(AppUtil.LOG_APP, "Erro no list da " + tabela + ": " + e.getMessage());
+    }
+    return listClientes;
+  }
+
+  public int getLastPK(String tabela) {
+    String sql = "SELECT seq FROM sqlite_sequence WHERE name = '" + tabela + "'";
+
+    try {
+      cursor = db.rawQuery(sql, null);
+
+      if (cursor.moveToFirst()) {
+        do {
+          return cursor.getInt(cursor.getColumnIndex("seq"));
+
+        } while (cursor.moveToNext());
+      }
+    } catch (SQLException e) {
+      Log.e(AppUtil.LOG_APP, "Erro no getLastPK da " + tabela + ": " + e.getMessage());
+    }
+    return -1;
   }
 }

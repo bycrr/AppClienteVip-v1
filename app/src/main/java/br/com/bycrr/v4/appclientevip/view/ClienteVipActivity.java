@@ -1,4 +1,4 @@
-package br.com.bycrr.v3.appclientevip.view;
+package br.com.bycrr.v4.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,16 +18,19 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.shashank.sony.fancydialoglib.Icon;
 
-import br.com.bycrr.v3.appclientevip.R;
-import br.com.bycrr.v3.appclientevip.api.AppUtil;
-import br.com.bycrr.v3.appclientevip.model.Cliente;
+import br.com.bycrr.v4.appclientevip.R;
+import br.com.bycrr.v4.appclientevip.api.AppUtil;
+import br.com.bycrr.v4.appclientevip.controller.ClienteController;
+import br.com.bycrr.v4.appclientevip.model.Cliente;
 
 public class ClienteVipActivity extends AppCompatActivity {
 
   // declarar objetos e variáveis
   Cliente novoVip;
+  ClienteController clienteController;
   private SharedPreferences preferences;
   boolean isFormularioOk, isPessoaFisica;
+  int ultimoID;
 
   // criar variáveis de tela
   EditText editPrimeiroNome, editSobrenome;
@@ -48,6 +51,8 @@ public class ClienteVipActivity extends AppCompatActivity {
           novoVip.setPrimeiroNome(editPrimeiroNome.getText().toString());
           novoVip.setSobrenome(editSobrenome.getText().toString());
           novoVip.setPessoaFisica(isPessoaFisica);
+          clienteController.incluir(novoVip);
+          ultimoID = clienteController.getUltimoId();
           salvarSharedPreferences();
 
           //if(isPessoaFisica) {
@@ -119,6 +124,7 @@ public class ClienteVipActivity extends AppCompatActivity {
     btnCancelar = findViewById(R.id.btnCancelar);
     isFormularioOk = false;
     novoVip = new Cliente();
+    clienteController = new ClienteController(this);
     restaurarSharedPreferences();
   }
 
@@ -128,6 +134,7 @@ public class ClienteVipActivity extends AppCompatActivity {
     dados.putString("primeiroNome", novoVip.getPrimeiroNome().toString());
     dados.putString("sobrenome", novoVip.getSobrenome().toString());
     dados.putBoolean("pessoaFisica", novoVip.getPessoaFisica());
+    dados.putInt("ultimoID", ultimoID);
     dados.apply();
   }
 
