@@ -1,12 +1,20 @@
 package br.com.bycrr.v4.appclientevip.model;
 
 public class ClientePJ extends ClientePF {
-  private int fk;
+  private int clientePFID;
   private String cnpj;
   private String razaoSocial;
   private String dataAbertura;
   private Boolean simplesNacional;
   private Boolean mei;
+
+  public int getClientePFID() {
+    return clientePFID;
+  }
+
+  public void setClientePFID(int clientePFID) {
+    this.clientePFID = clientePFID;
+  }
 
   public String getCnpj() {
     return cnpj;

@@ -42,9 +42,9 @@
                         android:id="@+id/txtAppName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
                         android:text="@string/app_name"
-                        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+                        android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse"
                         android:textColor="@color/colorText"
                         android:textStyle="bold" />
 
@@ -52,7 +52,7 @@
                         android:id="@+id/txtClientePessoaFisica"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
                         android:text="@string/txtPessoaFisica"
                         android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
                         android:textColor="@color/colorText"
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginRight="16dp"
                 android:ems="10"
                 android:hint="@string/txtHintCPF"
@@ -119,7 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginRight="16dp"
                 android:ems="10"
                 android:hint="@string/txtHintNomeCompleto"
@@ -134,7 +134,7 @@
                 android:background="@drawable/custom_btn_b"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="8dp"
-                android:textAppearance="@android:style/TextAppearance.Holo.Large"
+                android:textAppearance="@android:style/TextAppearance.Holo.Medium"
                 android:layout_marginRight="16dp"
               android:text="@string/btnSalvarContinuar" />
 
@@ -168,7 +168,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="4dp"
-                android:textAppearance="@android:style/TextAppearance.Holo.Large"
+                android:textAppearance="@android:style/TextAppearance.Holo.Medium"
                 android:text="@string/btnVoltar" />
 
             <Button
@@ -181,7 +181,7 @@
                 android:layout_marginTop="4dp"
                 android:background="@drawable/custom_btn_b"
                 android:layout_marginBottom="8dp"
-                android:textAppearance="@android:style/TextAppearance.Holo.Large"
+                android:textAppearance="@android:style/TextAppearance.Holo.Medium"
                 android:layout_weight="1"
                 android:text="@string/btnCancelar" />
 

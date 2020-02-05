@@ -45,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:text="@string/app_name"
-                        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+                        android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse"
                         android:textColor="@color/colorText"
                         android:textStyle="bold" />
 

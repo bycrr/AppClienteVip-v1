@@ -38,8 +38,8 @@ public class ClientePFDataModel {
     query += FK + " INTEGER, ";
     query += CPF + " INTEGER, ";
     query += NOME_COMPLETO + " TEXT, ";
-    query += DATA_INCLUSAO + " TEXT, ";
-    query += DATA_ALTERACAO + " TEXT, ";
+    query += DATA_INCLUSAO + " datetime default current_timestamp, ";
+    query += DATA_ALTERACAO + " datetime default current_timestamp, ";
     query += " FOREIGN KEY(" + FK +") REFERENCES cliente(id) ";
     query += ")";
 

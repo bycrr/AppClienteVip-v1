@@ -11,14 +11,14 @@ public class ClientePJDataModel {
    *   private Boolean simplesNacional;
    *   private Boolean mei;
    */
-  private static final String TABELA = "clientePJ";
-  private static final String ID = "id";
-  private static final String FK = "clientePFID";
-  private static final String CNPJ = "cnpj";
-  private static final String RAZAO_SOCIAL = "razaoSocial";
-  private static final String DATA_ABERTURA = "dataAbertura";
-  private static final String SIMPLES_NACIONAL = "simplesNacional";
-  private static final String MEI = "mei";
+  public static final String TABELA = "clientePJ";
+  public static final String ID = "id";
+  public static final String FK = "clientePFID";
+  public static final String CNPJ = "cnpj";
+  public static final String RAZAO_SOCIAL = "razaoSocial";
+  public static final String DATA_ABERTURA = "dataAbertura";
+  public static final String SIMPLES_NACIONAL = "simplesNacional";
+  public static final String MEI = "mei";
   private static final String DATA_INCLUSAO = "dataInclusao";
   private static final String DATA_ALTERACAO = "dataAlteracao";
   private static String query;
@@ -50,8 +50,8 @@ public class ClientePJDataModel {
     query += DATA_ABERTURA + " TEXT, ";
     query += SIMPLES_NACIONAL + " INTEGER, ";
     query += MEI + " INTEGER, ";
-    query += DATA_INCLUSAO + " TEXT, ";
-    query += DATA_ALTERACAO + " TEXT, ";
+    query += DATA_INCLUSAO + " datetime default current_timestamp, ";
+    query += DATA_ALTERACAO + " datetime default current_timestamp, ";
     query += " FOREIGN KEY(" + FK +") REFERENCES clientePF(id) ";
     query += ")";
 

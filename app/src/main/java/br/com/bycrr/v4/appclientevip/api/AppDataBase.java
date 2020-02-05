@@ -18,6 +18,7 @@ import br.com.bycrr.v4.appclientevip.dataModel.ClientePFDataModel;
 import br.com.bycrr.v4.appclientevip.dataModel.ClientePJDataModel;
 import br.com.bycrr.v4.appclientevip.model.Cliente;
 import br.com.bycrr.v4.appclientevip.model.ClientePF;
+import br.com.bycrr.v4.appclientevip.model.ClientePJ;
 
 public class AppDataBase extends SQLiteOpenHelper {
 
@@ -161,6 +162,35 @@ public class AppDataBase extends SQLiteOpenHelper {
           clientePF.setNomeCompleto(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.NOME_COMPLETO)));
           clientePF.setCpf(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.CPF)));
           listClientes.add(clientePF);
+        } while (cursor.moveToNext());
+
+        Log.i(AppUtil.LOG_APP, "List ok na " + tabela);
+      }
+    } catch (SQLException e) {
+      Log.e(AppUtil.LOG_APP, "Erro no list da " + tabela + ": " + e.getMessage());
+    }
+    return listClientes;
+  }
+
+  public List<ClientePJ> listClientesPJ(String tabela) {
+    List<ClientePJ> listClientes = new ArrayList<>();
+    ClientePJ clientePJ;
+    String sql = "SELECT * FROM " + tabela;
+
+    try {
+      cursor = db.rawQuery(sql, null);
+
+      if (cursor.moveToFirst()) {
+        do {
+          clientePJ = new ClientePJ();
+          clientePJ.setId(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.ID)));
+          clientePJ.setClientePFID(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.FK)));
+          clientePJ.setCpf(cursor.getString(cursor.getColumnIndex(ClientePJDataModel.CNPJ)));
+          clientePJ.setRazaoSocial(cursor.getString(cursor.getColumnIndex(ClientePJDataModel.RAZAO_SOCIAL)));
+          clientePJ.setDataAbertura(cursor.getString(cursor.getColumnIndex(ClientePJDataModel.DATA_ABERTURA)));
+          clientePJ.setSimplesNacional(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.SIMPLES_NACIONAL))==1);
+          clientePJ.setMei(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.MEI))==1);
+          listClientes.add(clientePJ);
         } while (cursor.moveToNext());
 
         Log.i(AppUtil.LOG_APP, "List ok na " + tabela);

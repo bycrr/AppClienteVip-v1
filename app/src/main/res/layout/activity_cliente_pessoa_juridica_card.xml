@@ -43,9 +43,9 @@
             android:id="@+id/txtAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:text="@string/app_name"
-            android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse"
             android:textColor="@color/colorText"
             android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
             android:id="@+id/txtClientePessoaFisica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:text="@string/txtPessoaJuridica"
             android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
             android:textColor="@color/colorText"
@@ -73,7 +73,10 @@
   <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     app:cardCornerRadius="4dp"
     app:cardElevation="8dp">
 
@@ -100,7 +103,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/txtHintCNPJ"
@@ -121,7 +124,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/txtHintRazaoSocial"
@@ -142,7 +145,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/txtHintDataAberturaEmpresa"
@@ -153,10 +156,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="simplesNacional"
         android:text="@string/txtSimplesNacional"
-        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
         android:textStyle="bold" />
 
       <CheckBox
@@ -164,10 +167,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:onClick="MEI"
         android:text="@string/txtMEI"
-        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
         android:textStyle="bold" />
 
       <Button
@@ -175,12 +178,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/custom_btn_b"
         android:layout_marginBottom="16dp"
         android:text="@string/btnSalvarContinuar"
-        android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -191,44 +194,45 @@
   <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     app:cardCornerRadius="4dp"
     app:cardElevation="8dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:layout_gravity="center"
       android:background="@color/colorPrimary"
-      android:orientation="vertical">
+      android:orientation="horizontal">
 
       <Button
         android:id="@+id/btnVoltar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="8dp"
-        android:background="@drawable/custom_btn_b"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
         android:layout_weight="1"
+        android:background="@drawable/custom_btn_b"
         android:text="@string/btnVoltar"
-        android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
       <Button
         android:id="@+id/btnCancelar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/custom_btn_b"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
+        android:background="@drawable/custom_btn_b"
         android:text="@string/btnCancelar"
-        android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
