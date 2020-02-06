@@ -112,6 +112,14 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
       editCPF.requestFocus();
       retorno = false;
     }
+    if(!AppUtil.isCPF(editCPF.getText().toString())) {
+      editCPF.setError("*");
+      editCPF.requestFocus();
+      retorno = false;
+      Toast.makeText(getApplicationContext(),"CPF inválido! Corrija para continuar.",Toast.LENGTH_LONG).show();
+    } else {
+      editCPF.setText(AppUtil.mascaraCPF(editCPF.getText().toString()));
+    }
     if(TextUtils.isEmpty(editNomeCompleto.getText().toString())) {
       editNomeCompleto.setError("*");
       editNomeCompleto.requestFocus();

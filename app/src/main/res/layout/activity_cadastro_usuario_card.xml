@@ -45,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:text="@string/app_name"
-                        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+                        android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse"
                         android:textColor="@color/colorText"
                         android:textStyle="bold" />
 
@@ -73,7 +73,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="8dp">
 
@@ -99,7 +102,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginLeft="16dp"
-          android:layout_marginTop="8dp"
+          android:layout_marginTop="4dp"
           android:layout_marginRight="16dp"
           android:ems="10"
           android:enabled="false"
@@ -122,7 +125,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginLeft="16dp"
-          android:layout_marginTop="8dp"
+          android:layout_marginTop="4dp"
           android:layout_marginRight="16dp"
           android:ems="10"
           android:hint="@string/txtHintEmail"
@@ -143,7 +146,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginLeft="16dp"
-          android:layout_marginTop="8dp"
+          android:layout_marginTop="4dp"
           android:layout_marginRight="16dp"
           android:ems="10"
           android:hint="@string/txtSenhaA"
@@ -164,7 +167,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginLeft="16dp"
-          android:layout_marginTop="8dp"
+          android:layout_marginTop="4dp"
           android:layout_marginRight="16dp"
           android:ems="10"
           android:hint="@string/txtSenhaB"
@@ -175,7 +178,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginLeft="16dp"
-          android:layout_marginTop="8dp"
+          android:layout_marginTop="4dp"
           android:layout_marginBottom="16dp"
           android:onClick="validarTermo"
           android:text="@string/txtTermosPolitica"
@@ -192,7 +195,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="8dp">
 
@@ -210,6 +216,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:background="@drawable/custom_btn_b"
                 android:layout_marginBottom="8dp"
                 android:text="@string/btnCadastro"
                 android:textAppearance="@android:style/TextAppearance.Holo.Large" />

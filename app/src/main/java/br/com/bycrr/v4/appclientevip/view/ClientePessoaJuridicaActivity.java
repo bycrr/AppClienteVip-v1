@@ -31,7 +31,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
   Cliente novoVip;
   ClientePJ novoClientePJ;
   ClientePJController clientePJController;
-  ClientePFController clientePFController;
+  //não vai ser usado, melhor usar o shared preferences// ClientePFController clientePFController;
   private SharedPreferences preferences;
 
   // criar variáveis de tela
@@ -52,7 +52,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
       public void onClick(View v) {
 
         if(isFormularioOk = validarFormulario()) {
-          ultimoIDClientePF = clientePFController.getUltimoId();
+          //ultimoIDClientePF = clientePFController.getUltimoId();
           novoClientePJ.setClientePFID(ultimoIDClientePF);
           novoClientePJ.setCnpj(editCNPJ.getText().toString());
           novoClientePJ.setRazaoSocial(editRazaoSocial.getText().toString());
@@ -113,6 +113,14 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
       editCNPJ.requestFocus();
       retorno = false;
     }
+    if(!AppUtil.isCNPJ((editCNPJ.getText().toString()))) {
+      editCNPJ.setError("*");
+      editCNPJ.requestFocus();
+      retorno = false;
+      Toast.makeText(getApplicationContext(),"CNPJ inválido! Corrija para continuar.",Toast.LENGTH_LONG).show();
+    } else {
+      editCNPJ.setText(AppUtil.mascaraCNPJ(editCNPJ.getText().toString()));
+    }
     if(TextUtils.isEmpty(editRazaoSocial.getText().toString())) {
       editRazaoSocial.setError("*");
       editRazaoSocial.requestFocus();
@@ -141,7 +149,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
     novoClientePJ = new ClientePJ();
     novoVip = new Cliente();
     clientePJController = new ClientePJController(this);
-    clientePFController = new ClientePFController(this);
+    //clientePFController = new ClientePFController(this);
     restaurarSharedPreferences();
   }
 
@@ -160,6 +168,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     //isPessoaFisica = preferences.getBoolean("pessoaFisica", false);
+    ultimoIDClientePF = preferences.getInt("ultimoIDClientePF", -1);
   }
   public void simplesNacional(View view) {
     isSimplesNacional = chSimplesNacional.isChecked();
