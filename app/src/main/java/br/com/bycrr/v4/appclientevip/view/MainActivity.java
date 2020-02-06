@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
       Log.i(AppUtil.LOG_APP, "CPNJ: " + clientePJ.getCnpj());
       Log.i(AppUtil.LOG_APP, "Razão Social: " + clientePJ.getRazaoSocial());
       Log.i(AppUtil.LOG_APP, "Data Abertura: " + clientePJ.getDataAbertura());
-      Log.i(AppUtil.LOG_APP, "Simples Nacional: " + clientePJ.getSimplesNacional());
-      Log.i(AppUtil.LOG_APP, "MEI: " + clientePJ.getMei());
+      Log.i(AppUtil.LOG_APP, "Simples Nacional: " + clientePJ.isSimplesNacional());
+      Log.i(AppUtil.LOG_APP, "MEI: " + clientePJ.isMei());
     }
   }
 

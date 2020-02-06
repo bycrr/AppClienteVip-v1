@@ -20,6 +20,7 @@ import com.shashank.sony.fancydialoglib.Icon;
 
 import br.com.bycrr.v4.appclientevip.R;
 import br.com.bycrr.v4.appclientevip.api.AppUtil;
+import br.com.bycrr.v4.appclientevip.controller.ClientePFController;
 import br.com.bycrr.v4.appclientevip.controller.ClientePJController;
 import br.com.bycrr.v4.appclientevip.model.Cliente;
 import br.com.bycrr.v4.appclientevip.model.ClientePJ;
@@ -30,6 +31,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
   Cliente novoVip;
   ClientePJ novoClientePJ;
   ClientePJController clientePJController;
+  ClientePFController clientePFController;
   private SharedPreferences preferences;
 
   // criar variáveis de tela
@@ -37,7 +39,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
   Button btnSalvarContinuar, btnVoltar, btnCancelar;
   CheckBox chSimplesNacional, chMEI;
   boolean isFormularioOk, isSimplesNacional, isMEI;
-  int ultimoIDClientePJ;
+  int ultimoIDClientePF;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +52,14 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
       public void onClick(View v) {
 
         if(isFormularioOk = validarFormulario()) {
-          novoClientePJ.setClientePFID(ultimoIDClientePJ);
+          ultimoIDClientePF = clientePFController.getUltimoId();
+          novoClientePJ.setClientePFID(ultimoIDClientePF);
           novoClientePJ.setCnpj(editCNPJ.getText().toString());
           novoClientePJ.setRazaoSocial(editRazaoSocial.getText().toString());
           novoClientePJ.setDataAbertura(editDataAberturaPJ.getText().toString());
           novoClientePJ.setSimplesNacional(isSimplesNacional);
           novoClientePJ.setMei(isMEI);
           clientePJController.incluir(novoClientePJ);
-          ultimoIDClientePJ = clientePJController.getUltimoId();
           salvarSharedPreferences();
           Intent intent = new Intent(ClientePessoaJuridicaActivity.this, CredencialAcessoActivity.class);
           startActivity(intent);
@@ -139,6 +141,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
     novoClientePJ = new ClientePJ();
     novoVip = new Cliente();
     clientePJController = new ClientePJController(this);
+    clientePFController = new ClientePFController(this);
     restaurarSharedPreferences();
   }
 
@@ -150,7 +153,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
     dados.putString("razaoSocial", editRazaoSocial.getText().toString());
     dados.putBoolean("simplesNacional", isSimplesNacional);
     dados.putBoolean("mei", isMEI);
-    dados.putInt("ultimoIDClientePF", ultimoIDClientePJ);
+    dados.putInt("ultimoIDClientePF", ultimoIDClientePF);
     dados.apply();
   }
 

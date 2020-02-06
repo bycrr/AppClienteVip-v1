@@ -8,9 +8,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import br.com.bycrr.v4.appclientevip.api.AppDataBase;
-import br.com.bycrr.v4.appclientevip.dataModel.ClientePFDataModel;
 import br.com.bycrr.v4.appclientevip.dataModel.ClientePJDataModel;
-import br.com.bycrr.v4.appclientevip.model.ClientePF;
 import br.com.bycrr.v4.appclientevip.model.ClientePJ;
 
 public class ClientePJController extends AppDataBase {
@@ -24,12 +22,12 @@ public class ClientePJController extends AppDataBase {
 
   public boolean incluir(ClientePJ cliente) {
     dados = new ContentValues();
-    dados.put(ClientePJDataModel.FK, cliente.getClienteID());
+    dados.put(ClientePJDataModel.FK, cliente.getClientePFID());
     dados.put(ClientePJDataModel.CNPJ, cliente.getCnpj());
     dados.put(ClientePJDataModel.RAZAO_SOCIAL, cliente.getRazaoSocial());
     dados.put(ClientePJDataModel.DATA_ABERTURA, cliente.getDataAbertura());
-    dados.put(ClientePJDataModel.SIMPLES_NACIONAL, cliente.getSimplesNacional());
-    dados.put(ClientePJDataModel.MEI, cliente.getMei());
+    dados.put(ClientePJDataModel.SIMPLES_NACIONAL, cliente.isSimplesNacional());
+    dados.put(ClientePJDataModel.MEI, cliente.isMei());
     return insert(TABELA, dados);
   }
 
@@ -39,8 +37,8 @@ public class ClientePJController extends AppDataBase {
     dados.put(ClientePJDataModel.CNPJ, cliente.getCnpj());
     dados.put(ClientePJDataModel.RAZAO_SOCIAL, cliente.getRazaoSocial());
     dados.put(ClientePJDataModel.DATA_ABERTURA, cliente.getDataAbertura());
-    dados.put(ClientePJDataModel.SIMPLES_NACIONAL, cliente.getSimplesNacional());
-    dados.put(ClientePJDataModel.MEI, cliente.getMei());
+    dados.put(ClientePJDataModel.SIMPLES_NACIONAL, cliente.isSimplesNacional());
+    dados.put(ClientePJDataModel.MEI, cliente.isMei());
     return update(TABELA, dados);
   }
 

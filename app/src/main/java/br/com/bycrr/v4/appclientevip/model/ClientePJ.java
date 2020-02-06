@@ -40,7 +40,7 @@ public class ClientePJ extends ClientePF {
     this.dataAbertura = dataAbertura;
   }
 
-  public Boolean getSimplesNacional() {
+  public Boolean isSimplesNacional() {
     return simplesNacional;
   }
 
@@ -48,7 +48,7 @@ public class ClientePJ extends ClientePF {
     this.simplesNacional = simplesNacional;
   }
 
-  public Boolean getMei() {
+  public Boolean isMei() {
     return mei;
   }
 
