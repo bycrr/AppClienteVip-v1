@@ -45,7 +45,7 @@ public class ClientePJDataModel {
     query = "CREATE TABLE " + TABELA + " (";
     query += ID + " INTEGER PRIMARY KEY AUTOINCREMENT, ";
     query += FK + " INTEGER, ";
-    query += CNPJ + " INTEGER, ";
+    query += CNPJ + " TEXT, ";
     query += RAZAO_SOCIAL + " TEXT, ";
     query += DATA_ABERTURA + " TEXT, ";
     query += SIMPLES_NACIONAL + " INTEGER, ";

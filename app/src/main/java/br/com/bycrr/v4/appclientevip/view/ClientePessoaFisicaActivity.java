@@ -153,6 +153,6 @@ public class ClientePessoaFisicaActivity extends AppCompatActivity {
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     isPessoaFisica = preferences.getBoolean("pessoaFisica", true);
-    clienteID = preferences.getInt("ultimoID", 0);
+    clienteID = preferences.getInt("clienteID", 0);
   }
 }

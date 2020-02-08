@@ -30,7 +30,7 @@ public class ClienteVipActivity extends AppCompatActivity {
   ClienteController clienteController;
   private SharedPreferences preferences;
   boolean isFormularioOk, isPessoaFisica;
-  int ultimoID;
+  int clienteID;
 
   // criar variáveis de tela
   EditText editPrimeiroNome, editSobrenome;
@@ -52,7 +52,7 @@ public class ClienteVipActivity extends AppCompatActivity {
           novoVip.setSobrenome(editSobrenome.getText().toString());
           novoVip.setPessoaFisica(isPessoaFisica);
           clienteController.incluir(novoVip);
-          ultimoID = clienteController.getUltimoId();
+          clienteID = clienteController.getUltimoId();
           salvarSharedPreferences();
 
           //if(isPessoaFisica) {
@@ -133,8 +133,10 @@ public class ClienteVipActivity extends AppCompatActivity {
     SharedPreferences.Editor dados = preferences.edit();
     dados.putString("primeiroNome", novoVip.getPrimeiroNome().toString());
     dados.putString("sobrenome", novoVip.getSobrenome().toString());
+    //dados.putString("email", novoVip.getEmail());
+    //dados.putString("senha", novoVip.getSenha());
     dados.putBoolean("pessoaFisica", novoVip.getPessoaFisica());
-    dados.putInt("ultimoID", ultimoID);
+    dados.putInt("clienteID", clienteID);
     dados.apply();
   }
 

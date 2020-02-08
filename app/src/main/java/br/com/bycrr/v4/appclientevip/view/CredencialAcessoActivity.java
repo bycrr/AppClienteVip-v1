@@ -20,19 +20,22 @@ import com.shashank.sony.fancydialoglib.Icon;
 
 import br.com.bycrr.v4.appclientevip.R;
 import br.com.bycrr.v4.appclientevip.api.AppUtil;
+import br.com.bycrr.v4.appclientevip.controller.ClienteController;
+import br.com.bycrr.v4.appclientevip.model.Cliente;
 
 public class CredencialAcessoActivity extends AppCompatActivity {
 
   // criar variáveis
   Button btnCadastro;
-  EditText editNome;
-  EditText editEmail;
-  EditText editSenhaA;
-  EditText editSenhaB;
+  EditText editNome, editEmail, editSenhaA, editSenhaB;
   CheckBox ckTermo;
   boolean isFormularioOk;
   SharedPreferences preferences;
   Boolean isPessoaFisica;
+  int clienteID;
+  Cliente cliente;
+  ClienteController clienteController;
+  String primeiroNome, sobrenome;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,7 @@ public class CredencialAcessoActivity extends AppCompatActivity {
             editSenhaB.setError("b");
             editSenhaB.requestFocus();
             //Toast.makeText(getApplicationContext(),"As senhas digitadas não conferem!", Toast.LENGTH_LONG).show();
+
             new FancyAlertDialog.Builder(CredencialAcessoActivity.this)
               .setTitle("ATENÇÃO!")
               .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
@@ -98,6 +102,9 @@ public class CredencialAcessoActivity extends AppCompatActivity {
               .build();
 
           } else {
+            cliente.setEmail(editEmail.getText().toString());
+            cliente.setSenha(editSenhaA.getText().toString());
+            clienteController.alterar(cliente);
             salvarSharedPreferences();
             Intent iMenuPrincipal = new Intent(CredencialAcessoActivity.this, LoginActivity.class);
             startActivity(iMenuPrincipal);
@@ -117,6 +124,8 @@ public class CredencialAcessoActivity extends AppCompatActivity {
     editSenhaB = findViewById(R.id.editSenhaB);
     ckTermo = findViewById(R.id.ckTermo);
     isFormularioOk = false;
+    cliente = new Cliente();
+    clienteController = new ClienteController(this);
     restaurarSharedPreferences();
   }
 
@@ -146,6 +155,13 @@ public class CredencialAcessoActivity extends AppCompatActivity {
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     isPessoaFisica = preferences.getBoolean("pessoaFisica", false);
+    clienteID = preferences.getInt("clienteID", -1);
+    primeiroNome = preferences.getString("primeiroNome", "erro");
+    sobrenome = preferences.getString("sobrenome", "erro");
+    cliente.setId(clienteID);
+    cliente.setPrimeiroNome(primeiroNome);
+    cliente.setSobrenome(sobrenome);
+    cliente.setPessoaFisica(isPessoaFisica);
 
     if (isPessoaFisica) {
       editNome.setText(preferences.getString("nomeCompleto", "Verifique os dados"));

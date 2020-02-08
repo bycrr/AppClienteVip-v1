@@ -195,8 +195,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void OnClick() {
           Toast.makeText(getApplicationContext(),cliente.getPrimeiroNome() + ", volte sempre! Obrigado.",Toast.LENGTH_SHORT).show();
-          finish();
-          return;
+          finishAffinity();
         }
       })
       .OnNegativeClicked(new FancyAlertDialogListener() {

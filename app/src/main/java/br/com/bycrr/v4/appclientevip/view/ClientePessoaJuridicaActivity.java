@@ -118,6 +118,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
       editCNPJ.requestFocus();
       retorno = false;
       Toast.makeText(getApplicationContext(),"CNPJ inválido! Corrija para continuar.",Toast.LENGTH_LONG).show();
+
     } else {
       editCNPJ.setText(AppUtil.mascaraCNPJ(editCNPJ.getText().toString()));
     }

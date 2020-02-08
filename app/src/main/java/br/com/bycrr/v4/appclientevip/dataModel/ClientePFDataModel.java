@@ -36,7 +36,7 @@ public class ClientePFDataModel {
     query = "CREATE TABLE " + TABELA + " (";
     query += ID + " INTEGER PRIMARY KEY AUTOINCREMENT, ";
     query += FK + " INTEGER, ";
-    query += CPF + " INTEGER, ";
+    query += CPF + " TEXT, ";
     query += NOME_COMPLETO + " TEXT, ";
     query += DATA_INCLUSAO + " datetime default current_timestamp, ";
     query += DATA_ALTERACAO + " datetime default current_timestamp, ";
