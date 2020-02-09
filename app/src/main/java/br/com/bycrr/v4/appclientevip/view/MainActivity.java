@@ -20,6 +20,7 @@ import java.util.List;
 
 import br.com.bycrr.v4.appclientevip.R;
 import br.com.bycrr.v4.appclientevip.api.AppUtil;
+import br.com.bycrr.v4.appclientevip.controller.ClienteController;
 import br.com.bycrr.v4.appclientevip.model.Cliente;
 import br.com.bycrr.v4.appclientevip.model.ClientePF;
 import br.com.bycrr.v4.appclientevip.model.ClientePJ;
@@ -37,11 +38,15 @@ public class MainActivity extends AppCompatActivity {
   ClientePJ clientePJ;
   TextView txtNomeCliente;
   List<Cliente> clientes;
+  ClienteController clienteController;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    clienteController = new ClienteController(this);
+    clienteController.getClienteByID(cliente);
+    cliente.getClientePF();
     initFormulario();
     buscarListaDeClientes();
 

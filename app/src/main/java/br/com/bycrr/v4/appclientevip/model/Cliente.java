@@ -7,6 +7,8 @@ public class Cliente {
   private String email;
   private String senha;
   private Boolean pessoaFisica;
+  private ClientePF clientePF;
+  private ClientePJ clientePJ;
 
   public int getId() {
     return id;
@@ -54,5 +56,21 @@ public class Cliente {
 
   public void setPessoaFisica(Boolean pessoaFisica) {
     this.pessoaFisica = pessoaFisica;
+  }
+
+  public ClientePF getClientePF() {
+    return clientePF;
+  }
+
+  public void setClientePF(ClientePF clientePF) {
+    this.clientePF = clientePF;
+  }
+
+  public ClientePJ getClientePJ() {
+    return clientePJ;
+  }
+
+  public void setClientePJ(ClientePJ clientePJ) {
+    this.clientePJ = clientePJ;
   }
 }

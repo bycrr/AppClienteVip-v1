@@ -53,6 +53,10 @@ public class ClienteController extends AppDataBase {
     return getLastPK(TABELA);
   }
 
+  public void getClienteByID(Cliente cliente) {
+    getClienteByID(ClienteDataModel.TABELA, cliente);
+  }
+
   /*public static boolean validarDadosCliente(Cliente cliente, String email, String senha) {
     boolean retorno = (cliente.getEmail().equals(email) && cliente.getSenha().equals(senha));
     return retorno;
