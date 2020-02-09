@@ -1,4 +1,4 @@
-package br.com.bycrr.v4.appclientevip.view;
+package br.com.bycrr.v5.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,29 +17,30 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.shashank.sony.fancydialoglib.Icon;
 
-import br.com.bycrr.v4.appclientevip.R;
-import br.com.bycrr.v4.appclientevip.api.AppUtil;
-import br.com.bycrr.v4.appclientevip.controller.ClienteController;
-import br.com.bycrr.v4.appclientevip.model.Cliente;
+import br.com.bycrr.v5.appclientevip.R;
+import br.com.bycrr.v5.appclientevip.api.AppUtil;
+import br.com.bycrr.v5.appclientevip.controller.ClientePFController;
+import br.com.bycrr.v5.appclientevip.model.Cliente;
+import br.com.bycrr.v5.appclientevip.model.ClientePF;
 
-public class ClienteVipActivity extends AppCompatActivity {
+public class ClientePessoaFisicaActivity extends AppCompatActivity {
 
   // declarar objetos e variáveis
   Cliente novoVip;
-  ClienteController clienteController;
+  ClientePF novoClientePF;
+  ClientePFController clientePFController;
   private SharedPreferences preferences;
-  boolean isFormularioOk, isPessoaFisica;
-  int clienteID;
 
   // criar variáveis de tela
-  EditText editPrimeiroNome, editSobrenome;
-  CheckBox chPessoaFisica;
-  Button btnSalvarContinuar, btnCancelar;
+  EditText editCPF, editNomeCompleto;
+  Button btnSalvarContinuar, btnVoltar, btnCancelar;
+  boolean isFormularioOk, isPessoaFisica;
+  int clienteID, ultimoIDClientePF;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cliente_vip_card);
+    setContentView(R.layout.activity_cliente_pessoa_fisica_card);
     initFormulario();
 
     btnSalvarContinuar.setOnClickListener(new View.OnClickListener() {
@@ -48,30 +48,35 @@ public class ClienteVipActivity extends AppCompatActivity {
       public void onClick(View v) {
 
         if(isFormularioOk = validarFormulario()) {
-          novoVip.setPrimeiroNome(editPrimeiroNome.getText().toString());
-          novoVip.setSobrenome(editSobrenome.getText().toString());
-          novoVip.setPessoaFisica(isPessoaFisica);
-          clienteController.incluir(novoVip);
-          clienteID = clienteController.getUltimoId();
+          novoClientePF.setCpf(editCPF.getText().toString());
+          novoClientePF.setNomeCompleto(editNomeCompleto.getText().toString());
+          novoClientePF.setClienteID(clienteID);
+          clientePFController.incluir(novoClientePF);
+          ultimoIDClientePF = clientePFController.getUltimoId();
           salvarSharedPreferences();
+          Intent intent;
 
-          //if(isPessoaFisica) {
-            // tela de cadastro do CPF
-            Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaFisicaActivity.class);
-            startActivity(intent);
+          if(isPessoaFisica) {
+            intent = new Intent(ClientePessoaFisicaActivity.this, CredencialAcessoActivity.class);
 
-          /*} else {
-            // tela de cadastro do CNPJ
-            Intent intent = new Intent(ClienteVipActivity.this, ClientePessoaJuridicaActivity.class);
-            startActivity(intent);
-          }*/
+          } else {
+            intent = new Intent(ClientePessoaFisicaActivity.this, ClientePessoaJuridicaActivity.class);
+          }
+          startActivity(intent);
         }
+      }
+    });
+    btnVoltar.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent(ClientePessoaFisicaActivity.this, LoginActivity.class);
+        startActivity(intent);
       }
     });
     btnCancelar.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        new FancyAlertDialog.Builder(ClienteVipActivity.this)
+        new FancyAlertDialog.Builder(ClientePessoaFisicaActivity.this)
           .setTitle("Confirme o Cancelamento")
           .setBackgroundColor(Color.parseColor("#303F9F"))  //Don't pass R.color.colorvalue
           .setMessage("Deseja realmente cancelar?")
@@ -97,55 +102,57 @@ public class ClienteVipActivity extends AppCompatActivity {
           .build();
       }
     });
-
   }
 
   private boolean validarFormulario() {
     boolean retorno = true;
 
-    if(TextUtils.isEmpty((editPrimeiroNome.getText().toString()))) {
-      editPrimeiroNome.setError("*");
-      editPrimeiroNome.requestFocus();
+    if(TextUtils.isEmpty((editCPF.getText().toString()))) {
+      editCPF.setError("*");
+      editCPF.requestFocus();
       retorno = false;
     }
-    if(TextUtils.isEmpty(editSobrenome.getText().toString())) {
-      editSobrenome.setError("*");
-      editSobrenome.requestFocus();
+    if(!AppUtil.isCPF(editCPF.getText().toString())) {
+      editCPF.setError("*");
+      editCPF.requestFocus();
+      retorno = false;
+      Toast.makeText(getApplicationContext(),"CPF inválido! Corrija para continuar.",Toast.LENGTH_LONG).show();
+    } else {
+      editCPF.setText(AppUtil.mascaraCPF(editCPF.getText().toString()));
+    }
+    if(TextUtils.isEmpty(editNomeCompleto.getText().toString())) {
+      editNomeCompleto.setError("*");
+      editNomeCompleto.requestFocus();
       retorno = false;
     }
     return retorno;
   }
 
   private void initFormulario() {
-    editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
-    editSobrenome = findViewById(R.id.editSobrenome);
-    chPessoaFisica = findViewById(R.id.ckPessoaFisica);
+    editCPF = findViewById(R.id.editCPF);
+    editNomeCompleto = findViewById(R.id.editNomeCompleto);
     btnSalvarContinuar = findViewById(R.id.btnSalvarContinuar);
     btnCancelar = findViewById(R.id.btnCancelar);
+    btnVoltar = findViewById(R.id.btnVoltar);
     isFormularioOk = false;
+    novoClientePF = new ClientePF();
     novoVip = new Cliente();
-    clienteController = new ClienteController(this);
+    clientePFController = new ClientePFController(this);
     restaurarSharedPreferences();
   }
 
   private void salvarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     SharedPreferences.Editor dados = preferences.edit();
-    dados.putString("primeiroNome", novoVip.getPrimeiroNome().toString());
-    dados.putString("sobrenome", novoVip.getSobrenome().toString());
-    //dados.putString("email", novoVip.getEmail());
-    //dados.putString("senha", novoVip.getSenha());
-    dados.putBoolean("pessoaFisica", novoVip.getPessoaFisica());
-    dados.putInt("clienteID", clienteID);
+    dados.putString("cpf", editCPF.getText().toString());
+    dados.putString("nomeCompleto", editNomeCompleto.getText().toString());
+    dados.putInt("ultimoIDClientePF", ultimoIDClientePF);
     dados.apply();
   }
 
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
-    //isPessoaFisica = preferences.getBoolean("pessoaFisica", false);
-  }
-
-  public void pessoaFisica(View view) {
-      isPessoaFisica = chPessoaFisica.isChecked();
+    isPessoaFisica = preferences.getBoolean("pessoaFisica", true);
+    clienteID = preferences.getInt("clienteID", 0);
   }
 }

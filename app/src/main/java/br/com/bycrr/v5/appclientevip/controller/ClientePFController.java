@@ -1,4 +1,4 @@
-package br.com.bycrr.v4.appclientevip.controller;
+package br.com.bycrr.v5.appclientevip.controller;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,9 +7,9 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-import br.com.bycrr.v4.appclientevip.api.AppDataBase;
-import br.com.bycrr.v4.appclientevip.dataModel.ClientePFDataModel;
-import br.com.bycrr.v4.appclientevip.model.ClientePF;
+import br.com.bycrr.v5.appclientevip.api.AppDataBase;
+import br.com.bycrr.v5.appclientevip.dataModel.ClientePFDataModel;
+import br.com.bycrr.v5.appclientevip.model.ClientePF;
 
 public class ClientePFController extends AppDataBase {
 

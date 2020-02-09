@@ -1,4 +1,4 @@
-package br.com.bycrr.v4.appclientevip.model;
+package br.com.bycrr.v5.appclientevip.model;
 
 public class ClientePF extends Cliente {
   private int ID;

@@ -1,4 +1,4 @@
-package br.com.bycrr.v4.appclientevip.view;
+package br.com.bycrr.v5.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,10 +22,10 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.shashank.sony.fancydialoglib.Icon;
 import com.squareup.picasso.Picasso;
 
-import br.com.bycrr.v4.appclientevip.R;
-import br.com.bycrr.v4.appclientevip.api.AppUtil;
-import br.com.bycrr.v4.appclientevip.controller.ClienteController;
-import br.com.bycrr.v4.appclientevip.model.Cliente;
+import br.com.bycrr.v5.appclientevip.R;
+import br.com.bycrr.v5.appclientevip.api.AppUtil;
+import br.com.bycrr.v5.appclientevip.controller.ClienteController;
+import br.com.bycrr.v5.appclientevip.model.Cliente;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         if(isFormularioOk = validarFormulario()) {
 
           if(validarDadosUsuario()) {
+            lembrarSenha(v);
             salvarSharedPreferences();
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
@@ -201,7 +202,6 @@ public class LoginActivity extends AppCompatActivity {
 
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
-    isLembrarSenha = preferences.getBoolean("loginAutomatico", false);
     clienteSalvo.setEmail(preferences.getString("email", "erro"));
     clienteSalvo.setSenha(preferences.getString("senha", "erro"));
     clienteSalvo.setPrimeiroNome(preferences.getString("primeiroNome", "erro"));

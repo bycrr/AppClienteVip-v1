@@ -4,7 +4,7 @@ android {
   compileSdkVersion 29
 
   defaultConfig {
-    applicationId "br.com.bycrr.v4.appclientevip"
+    applicationId "br.com.bycrr.v5.appclientevip"
     minSdkVersion 19
     targetSdkVersion 29
     versionCode 1

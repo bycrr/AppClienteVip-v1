@@ -68,7 +68,6 @@
 
     </androidx.cardview.widget.CardView>
 
-
     <!-- Formulário -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -224,6 +223,5 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.cardview.widget.CardView>
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

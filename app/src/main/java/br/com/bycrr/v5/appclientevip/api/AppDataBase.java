@@ -1,4 +1,4 @@
-package br.com.bycrr.v4.appclientevip.api;
+package br.com.bycrr.v5.appclientevip.api;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,12 +13,12 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.bycrr.v4.appclientevip.dataModel.ClienteDataModel;
-import br.com.bycrr.v4.appclientevip.dataModel.ClientePFDataModel;
-import br.com.bycrr.v4.appclientevip.dataModel.ClientePJDataModel;
-import br.com.bycrr.v4.appclientevip.model.Cliente;
-import br.com.bycrr.v4.appclientevip.model.ClientePF;
-import br.com.bycrr.v4.appclientevip.model.ClientePJ;
+import br.com.bycrr.v5.appclientevip.dataModel.ClienteDataModel;
+import br.com.bycrr.v5.appclientevip.dataModel.ClientePFDataModel;
+import br.com.bycrr.v5.appclientevip.dataModel.ClientePJDataModel;
+import br.com.bycrr.v5.appclientevip.model.Cliente;
+import br.com.bycrr.v5.appclientevip.model.ClientePF;
+import br.com.bycrr.v5.appclientevip.model.ClientePJ;
 
 public class AppDataBase extends SQLiteOpenHelper {
 

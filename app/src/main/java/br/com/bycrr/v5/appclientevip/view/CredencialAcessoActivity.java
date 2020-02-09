@@ -1,4 +1,4 @@
-package br.com.bycrr.v4.appclientevip.view;
+package br.com.bycrr.v5.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,10 +18,10 @@ import com.shashank.sony.fancydialoglib.FancyAlertDialog;
 import com.shashank.sony.fancydialoglib.FancyAlertDialogListener;
 import com.shashank.sony.fancydialoglib.Icon;
 
-import br.com.bycrr.v4.appclientevip.R;
-import br.com.bycrr.v4.appclientevip.api.AppUtil;
-import br.com.bycrr.v4.appclientevip.controller.ClienteController;
-import br.com.bycrr.v4.appclientevip.model.Cliente;
+import br.com.bycrr.v5.appclientevip.R;
+import br.com.bycrr.v5.appclientevip.api.AppUtil;
+import br.com.bycrr.v5.appclientevip.controller.ClienteController;
+import br.com.bycrr.v5.appclientevip.model.Cliente;
 
 public class CredencialAcessoActivity extends AppCompatActivity {
 

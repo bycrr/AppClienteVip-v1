@@ -1,4 +1,4 @@
-package br.com.bycrr.v4.appclientevip.view;
+package br.com.bycrr.v5.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import br.com.bycrr.v4.appclientevip.R;
+import br.com.bycrr.v5.appclientevip.R;
 
 public class RecuperarSenhaActivity extends AppCompatActivity {
 

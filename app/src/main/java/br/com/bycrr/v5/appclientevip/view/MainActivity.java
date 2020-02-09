@@ -1,4 +1,4 @@
-package br.com.bycrr.v4.appclientevip.view;
+package br.com.bycrr.v5.appclientevip.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -18,12 +18,12 @@ import com.shashank.sony.fancydialoglib.Icon;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.bycrr.v4.appclientevip.R;
-import br.com.bycrr.v4.appclientevip.api.AppUtil;
-import br.com.bycrr.v4.appclientevip.controller.ClienteController;
-import br.com.bycrr.v4.appclientevip.model.Cliente;
-import br.com.bycrr.v4.appclientevip.model.ClientePF;
-import br.com.bycrr.v4.appclientevip.model.ClientePJ;
+import br.com.bycrr.v5.appclientevip.R;
+import br.com.bycrr.v5.appclientevip.api.AppUtil;
+import br.com.bycrr.v5.appclientevip.controller.ClienteController;
+import br.com.bycrr.v5.appclientevip.model.Cliente;
+import br.com.bycrr.v5.appclientevip.model.ClientePF;
+import br.com.bycrr.v5.appclientevip.model.ClientePJ;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    initFormulario();
     clienteController = new ClienteController(this);
     clienteController.getClienteByID(cliente);
     cliente.getClientePF();
-    initFormulario();
     buscarListaDeClientes();
 
     /*txtTitulo = findViewById(R.id.txtTitulo);
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
   private void salvarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     SharedPreferences.Editor dados = preferences.edit();
-    dados.putBoolean("loginAutomatico", false);
+    //dados.putBoolean("loginAutomatico", false);
     dados.apply();
   }
 
@@ -106,7 +106,10 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void meusDados(View view) {
-    Log.i(AppUtil.LOG_APP, "*** DADOS CLIENTE ***");
+    Intent intent = new Intent(MainActivity.this, MeusDadosActivity.class);
+    startActivity(intent);
+
+/*    Log.i(AppUtil.LOG_APP, "*** DADOS CLIENTE ***");
     Log.i(AppUtil.LOG_APP, "ID: " + cliente.getId());
     Log.i(AppUtil.LOG_APP, "Primeiro Nome: " + cliente.getPrimeiroNome());
     Log.i(AppUtil.LOG_APP, "Sobrenome: " + cliente.getSobrenome());
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
       Log.i(AppUtil.LOG_APP, "Data Abertura: " + clientePJ.getDataAbertura());
       Log.i(AppUtil.LOG_APP, "Simples Nacional: " + clientePJ.isSimplesNacional());
       Log.i(AppUtil.LOG_APP, "MEI: " + clientePJ.isMei());
-    }
+    }*/
   }
 
   public void atualizarMeusDados(View view) {
