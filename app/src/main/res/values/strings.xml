@@ -28,6 +28,7 @@
 
   <!-- Tela novo cliente vip -->
   <string name="txtNovoVip">Novo Vip</string>
+  <string name="txtMeusDados">Meus Dados</string>
   <string name="txtPrimeiroNome">Primeiro Nome</string>
   <string name="txtSobrenome">Sobrenome</string>
   <string name="txtHintSobrenome">Digite seu sobrenome...</string>
