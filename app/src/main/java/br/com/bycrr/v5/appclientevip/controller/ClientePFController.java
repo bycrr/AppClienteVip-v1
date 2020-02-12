@@ -48,6 +48,11 @@ public class ClientePFController extends AppDataBase {
     return getLastPK(TABELA);
   }
 
+  public ClientePF getClientePFByFK(int idFK) {
+    // idFK é a chave primária da tabela Cliente (id)
+    return getClientePFByFK(ClientePFDataModel.TABELA, idFK);
+  }
+
   /*public static boolean validarDadosCliente(Cliente cliente, String email, String senha) {
     boolean retorno = (cliente.getEmail().equals(email) && cliente.getSenha().equals(senha));
     return retorno;

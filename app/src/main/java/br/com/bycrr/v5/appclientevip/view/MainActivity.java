@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     clientePF = new ClientePF();
     clientePJ = new ClientePJ();
     txtNomeCliente = findViewById(R.id.txtNomeCliente);
-    restaurarSharedPreferences();
+    //restaurarSharedPreferences();
     txtNomeCliente.setText("Bem vindo, " + cliente.getPrimeiroNome());
   }
 
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void atualizarMeusDados(View view) {
-    if (cliente.getPessoaFisica()) {
+    if (cliente.isPessoaFisica()) {
       cliente.setPrimeiroNome("Claudio R");
       cliente.setSobrenome("Powerguido");
       clientePF.setNomeCompleto("Claudinho Powerguido");

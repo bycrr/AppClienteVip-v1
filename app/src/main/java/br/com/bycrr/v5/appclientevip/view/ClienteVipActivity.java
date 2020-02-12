@@ -135,7 +135,7 @@ public class ClienteVipActivity extends AppCompatActivity {
     dados.putString("sobrenome", novoVip.getSobrenome().toString());
     //dados.putString("email", novoVip.getEmail());
     //dados.putString("senha", novoVip.getSenha());
-    dados.putBoolean("pessoaFisica", novoVip.getPessoaFisica());
+    dados.putBoolean("pessoaFisica", novoVip.isPessoaFisica());
     dados.putInt("clienteID", clienteID);
     dados.apply();
   }

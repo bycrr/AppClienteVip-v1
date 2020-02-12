@@ -43,7 +43,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ViewHold
     TextView txtPrimeiroNome = holder.rvPrimeiroNome;
     txtPrimeiroNome.setText(objDaLinha.getPrimeiroNome());
     Button btnPessoaFisica = holder.rvPessoaFisica;
-    btnPessoaFisica.setText(objDaLinha.getPessoaFisica() ? "CPF" : "CNPJ");
+    btnPessoaFisica.setText(objDaLinha.isPessoaFisica() ? "CPF" : "CNPJ");
   }
 
   @Override

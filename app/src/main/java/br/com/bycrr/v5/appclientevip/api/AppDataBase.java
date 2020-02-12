@@ -227,6 +227,7 @@ public class AppDataBase extends SQLiteOpenHelper {
       cursor = db.rawQuery(sql, null);
 
       if (cursor.moveToNext()) {
+        cliente.setId(obj.getId());
         cliente.setPrimeiroNome(cursor.getString(cursor.getColumnIndex(ClienteDataModel.PRIMEIRO_NOME)));
         cliente.setSobrenome(cursor.getString(cursor.getColumnIndex(ClienteDataModel.SOBRENOME)));
         cliente.setEmail(cursor.getString(cursor.getColumnIndex(ClienteDataModel.EMAIL)));
@@ -238,5 +239,24 @@ public class AppDataBase extends SQLiteOpenHelper {
       Log.e(AppUtil.LOG_APP, "Erro "+ e.getMessage());
     }
     return cliente;
+  }
+
+  public ClientePF getClientePFByFK(String tabela, int idFK) {
+    ClientePF clientePF = new ClientePF();
+    String sql = "SELECT * FROM " + tabela + " WHERE clienteID = " + idFK;
+
+    try {
+      cursor = db.rawQuery(sql, null);
+
+      if (cursor.moveToNext()) {
+        clientePF.setID(cursor.getInt(cursor.getColumnIndex(ClientePFDataModel.ID)));
+        clientePF.setNomeCompleto(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.NOME_COMPLETO)));
+        clientePF.setCpf(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.CPF)));
+      }
+    } catch (SQLException e) {
+      Log.e(AppUtil.LOG_APP, "Erro getClientePFByFK " + idFK);
+      Log.e(AppUtil.LOG_APP, "Erro "+ e.getMessage());
+    }
+    return clientePF;
   }
 }

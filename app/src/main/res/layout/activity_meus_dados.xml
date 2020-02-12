@@ -118,7 +118,7 @@
             android:inputType="textPersonName" />
 
           <TextView
-            android:id="@+id/txtSobreNome"
+            android:id="@+id/txtSobrenome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16sp"
@@ -128,7 +128,7 @@
             android:textStyle="bold" />
 
           <EditText
-            android:id="@+id/editSobreNome"
+            android:id="@+id/editSobrenome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"

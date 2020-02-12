@@ -7,10 +7,8 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.shashank.sony.fancydialoglib.Animation;
 import com.shashank.sony.fancydialoglib.FancyAlertDialog;
@@ -20,9 +18,8 @@ import com.shashank.sony.fancydialoglib.Icon;
 import br.com.bycrr.v5.appclientevip.R;
 import br.com.bycrr.v5.appclientevip.api.AppUtil;
 import br.com.bycrr.v5.appclientevip.controller.ClienteController;
+import br.com.bycrr.v5.appclientevip.controller.ClientePFController;
 import br.com.bycrr.v5.appclientevip.model.Cliente;
-import br.com.bycrr.v5.appclientevip.model.ClientePF;
-import br.com.bycrr.v5.appclientevip.model.ClientePJ;
 
 public class MeusDadosActivity extends AppCompatActivity {
 
@@ -43,6 +40,7 @@ public class MeusDadosActivity extends AppCompatActivity {
   //Button btnVoltar;
 
   ClienteController clienteController;
+  ClientePFController clientePFController;
   Cliente cliente;
   SharedPreferences preferences;
   int clienteID;
@@ -61,6 +59,16 @@ public class MeusDadosActivity extends AppCompatActivity {
     if (clienteID >= 1) {
       // Buscar os dados via controller
       cliente = clienteController.getClienteByID(cliente);
+      cliente.setClientePF(clientePFController.getClientePFByFK(cliente.getId()));
+      // dados obj Cliente
+      editPrimeiroNome.setText(cliente.getPrimeiroNome());
+      editSobrenome.setText(cliente.getSobrenome());
+      editEmail.setText(cliente.getEmail());
+      editSenha.setText(cliente.getSenha());
+      chPessoaFisica.setChecked(cliente.isPessoaFisica());
+      // dados obj ClientePF
+      editCPF.setText(cliente.getClientePF().getCpf());
+      editNomeCompleto.setText(cliente.getClientePF().getNomeCompleto());
 
     } else {
       new FancyAlertDialog.Builder(MeusDadosActivity.this)
@@ -115,13 +123,18 @@ public class MeusDadosActivity extends AppCompatActivity {
 
     // Card Credenciais
     editEmail = findViewById(R.id.editEmail);
-    editSenha = findViewById(R.id.editSenha);
+    editSenha = findViewById(R.id.editSenhaA);
 
     //btnVoltar = findViewById(R.id.btnVoltar);
 
     cliente = new Cliente();
     cliente.setId(clienteID);
     clienteController = new ClienteController(this);
+    clientePFController = new ClientePFController(this);
+
+    if(!cliente.isPessoaFisica()) {
+      // busco os dados PJ
+    }
   }
 
   public void voltar(View view) {

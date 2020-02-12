@@ -50,7 +50,7 @@ public class Cliente {
     this.senha = senha;
   }
 
-  public Boolean getPessoaFisica() {
+  public Boolean isPessoaFisica() {
     return pessoaFisica;
   }
 

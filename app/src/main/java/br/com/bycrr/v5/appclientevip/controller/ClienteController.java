@@ -26,7 +26,7 @@ public class ClienteController extends AppDataBase {
     dados.put(ClienteDataModel.SOBRENOME, cliente.getSobrenome());
     dados.put(ClienteDataModel.EMAIL, cliente.getEmail());
     dados.put(ClienteDataModel.SENHA, cliente.getSenha());
-    dados.put(ClienteDataModel.PESSOA_FISICA, cliente.getPessoaFisica());
+    dados.put(ClienteDataModel.PESSOA_FISICA, cliente.isPessoaFisica());
     return insert(TABELA, dados);
   }
 
@@ -37,7 +37,7 @@ public class ClienteController extends AppDataBase {
     dados.put(ClienteDataModel.SOBRENOME, cliente.getSobrenome());
     dados.put(ClienteDataModel.EMAIL, cliente.getEmail());
     dados.put(ClienteDataModel.SENHA, cliente.getSenha());
-    dados.put(ClienteDataModel.PESSOA_FISICA, cliente.getPessoaFisica());
+    dados.put(ClienteDataModel.PESSOA_FISICA, cliente.isPessoaFisica());
     return update(TABELA, dados);
   }
 
