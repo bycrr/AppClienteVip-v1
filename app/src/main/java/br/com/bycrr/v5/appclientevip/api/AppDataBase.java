@@ -243,13 +243,14 @@ public class AppDataBase extends SQLiteOpenHelper {
 
   public ClientePF getClientePFByFK(String tabela, int idFK) {
     ClientePF clientePF = new ClientePF();
-    String sql = "SELECT * FROM " + tabela + " WHERE clienteID = " + idFK;
+    String sql = "SELECT * FROM " + tabela + " WHERE " + ClientePFDataModel.FK + " = " + idFK;
 
     try {
       cursor = db.rawQuery(sql, null);
 
       if (cursor.moveToNext()) {
         clientePF.setID(cursor.getInt(cursor.getColumnIndex(ClientePFDataModel.ID)));
+        clientePF.setClienteID(idFK);
         clientePF.setNomeCompleto(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.NOME_COMPLETO)));
         clientePF.setCpf(cursor.getString(cursor.getColumnIndex(ClientePFDataModel.CPF)));
       }
@@ -258,5 +259,28 @@ public class AppDataBase extends SQLiteOpenHelper {
       Log.e(AppUtil.LOG_APP, "Erro "+ e.getMessage());
     }
     return clientePF;
+  }
+
+  public ClientePJ getClientePJByFK(String tabela, int idFK) {
+    ClientePJ clientePJ = new ClientePJ();
+    String sql = "SELECT * FROM " + tabela + " WHERE " + ClientePJDataModel.FK + " = " + idFK;
+
+    try {
+      cursor = db.rawQuery(sql, null);
+
+      if (cursor.moveToNext()) {
+        clientePJ.setID(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.ID)));
+        clientePJ.setClientePFID(idFK);
+        clientePJ.setRazaoSocial(cursor.getString(cursor.getColumnIndex(ClientePJDataModel.RAZAO_SOCIAL)));
+        clientePJ.setCnpj(cursor.getString(cursor.getColumnIndex(ClientePJDataModel.CNPJ)));
+        clientePJ.setDataAbertura(cursor.getString(cursor.getColumnIndex(ClientePJDataModel.DATA_ABERTURA)));
+        clientePJ.setSimplesNacional(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.SIMPLES_NACIONAL))==1);
+        clientePJ.setMei(cursor.getInt(cursor.getColumnIndex(ClientePJDataModel.MEI))==1);
+      }
+    } catch (SQLException e) {
+      Log.e(AppUtil.LOG_APP, "Erro getClientePJByFK " + idFK);
+      Log.e(AppUtil.LOG_APP, "Erro "+ e.getMessage());
+    }
+    return clientePJ;
   }
 }

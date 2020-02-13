@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
   private void restaurarSharedPreferences() {
     preferences = getSharedPreferences(AppUtil.PREF_APP, MODE_PRIVATE);
     cliente.setPrimeiroNome(preferences.getString("primeiroNome", "erro"));
-    cliente.setSobrenome(preferences.getString("sobrenome", "erro"));
+    /*cliente.setSobrenome(preferences.getString("sobrenome", "erro"));
     cliente.setEmail(preferences.getString("emailCliente", "erro"));
     cliente.setSenha(preferences.getString("senha", "erro"));
     cliente.setPessoaFisica(preferences.getBoolean("pessoaFisica", false));
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     clientePJ.setRazaoSocial(preferences.getString("razaoSocial", "erro"));
     clientePJ.setSimplesNacional(preferences.getBoolean("simplesNacional", false));
     clientePJ.setMei(preferences.getBoolean("mei", false));
-    clientePJ.setDataAbertura(preferences.getString("dataAberturaEmpresa", "erro"));
+    clientePJ.setDataAbertura(preferences.getString("dataAberturaEmpresa", "erro"));*/
   }
 
   private void initFormulario() {
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     clientePF = new ClientePF();
     clientePJ = new ClientePJ();
     txtNomeCliente = findViewById(R.id.txtNomeCliente);
-    //restaurarSharedPreferences();
+    restaurarSharedPreferences();
     txtNomeCliente.setText("Bem vindo, " + cliente.getPrimeiroNome());
   }
 

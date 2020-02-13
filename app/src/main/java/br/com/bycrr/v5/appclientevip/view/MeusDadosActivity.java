@@ -19,6 +19,7 @@ import br.com.bycrr.v5.appclientevip.R;
 import br.com.bycrr.v5.appclientevip.api.AppUtil;
 import br.com.bycrr.v5.appclientevip.controller.ClienteController;
 import br.com.bycrr.v5.appclientevip.controller.ClientePFController;
+import br.com.bycrr.v5.appclientevip.controller.ClientePJController;
 import br.com.bycrr.v5.appclientevip.model.Cliente;
 
 public class MeusDadosActivity extends AppCompatActivity {
@@ -41,6 +42,7 @@ public class MeusDadosActivity extends AppCompatActivity {
 
   ClienteController clienteController;
   ClientePFController clientePFController;
+  ClientePJController clientePJController;
   Cliente cliente;
   SharedPreferences preferences;
   int clienteID;
@@ -60,16 +62,29 @@ public class MeusDadosActivity extends AppCompatActivity {
       // Buscar os dados via controller
       cliente = clienteController.getClienteByID(cliente);
       cliente.setClientePF(clientePFController.getClientePFByFK(cliente.getId()));
+
+      if (!cliente.isPessoaFisica()) {
+        cliente.setClientePJ(clientePJController.getClientePJByFK(cliente.getClientePF().getID()));
+      }
       // dados obj Cliente
       editPrimeiroNome.setText(cliente.getPrimeiroNome());
       editSobrenome.setText(cliente.getSobrenome());
       editEmail.setText(cliente.getEmail());
       editSenha.setText(cliente.getSenha());
       chPessoaFisica.setChecked(cliente.isPessoaFisica());
+
       // dados obj ClientePF
       editCPF.setText(cliente.getClientePF().getCpf());
       editNomeCompleto.setText(cliente.getClientePF().getNomeCompleto());
 
+      // dados obj ClientePJ
+      if (!cliente.isPessoaFisica()) {
+        editCNPJ.setText(cliente.getClientePJ().getCnpj());
+        editRazaoSocial.setText(cliente.getClientePJ().getRazaoSocial());
+        editDataAberturaPJ.setText(cliente.getClientePJ().getDataAbertura());
+        chSimplesNacional.setChecked(cliente.getClientePJ().isSimplesNacional());
+        chMEI.setChecked(cliente.getClientePJ().isMei());
+      }
     } else {
       new FancyAlertDialog.Builder(MeusDadosActivity.this)
         .setTitle("ATENÇÃO")
@@ -131,10 +146,11 @@ public class MeusDadosActivity extends AppCompatActivity {
     cliente.setId(clienteID);
     clienteController = new ClienteController(this);
     clientePFController = new ClientePFController(this);
+    clientePJController = new ClientePJController(this);
 
-    if(!cliente.isPessoaFisica()) {
+    //if(!cliente.isPessoaFisica()) {
       // busco os dados PJ
-    }
+    //}
   }
 
   public void voltar(View view) {

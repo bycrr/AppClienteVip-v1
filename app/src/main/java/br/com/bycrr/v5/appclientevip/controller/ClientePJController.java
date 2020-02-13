@@ -8,7 +8,9 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import br.com.bycrr.v5.appclientevip.api.AppDataBase;
+import br.com.bycrr.v5.appclientevip.dataModel.ClientePFDataModel;
 import br.com.bycrr.v5.appclientevip.dataModel.ClientePJDataModel;
+import br.com.bycrr.v5.appclientevip.model.ClientePF;
 import br.com.bycrr.v5.appclientevip.model.ClientePJ;
 
 public class ClientePJController extends AppDataBase {
@@ -52,5 +54,10 @@ public class ClientePJController extends AppDataBase {
 
   public int getUltimoId() {
     return getLastPK(TABELA);
+  }
+
+  public ClientePJ getClientePJByFK(int idFK) {
+    // idFK é a chave primária da tabela Cliente (id)
+    return getClientePJByFK(ClientePJDataModel.TABELA, idFK);
   }
 }
