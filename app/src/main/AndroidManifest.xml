@@ -13,7 +13,8 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
     android:usesCleartextTraffic="true">
-    <activity android:name=".view.MeusDadosActivity"></activity>
+    <activity android:name=".view.AtualizarMeusDadosActivity"></activity>
+    <activity android:name=".view.MeusDadosActivity" />
     <activity android:name=".view.ConsultarClientesActivity" />
     <activity android:name=".view.RecuperarSenhaActivity" />
     <activity android:name=".view.ClientePessoaJuridicaActivity" />

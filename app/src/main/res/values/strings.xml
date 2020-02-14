@@ -59,4 +59,13 @@
   <string name="txtConsultarClientesVip">Consultar Clientes VIP</string>
   <string name="txtCliente">Cliente</string>
   <string name="txtTermosPolitica"><![CDATA[Ler Política de Privacidade & Termos de Uso]]></string>
+  <string name="txtAtualizarMeusDados">Atualizar Meus Dados</string>
+  <string name="btnEditarCardCliente">EDITAR</string>
+  <string name="btnSalvarCardCliente">SALVAR</string>
+  <string name="btnEditarCardClientePF">EDITAR</string>
+  <string name="btnSalvarCardClientePF">SALVAR</string>
+  <string name="btnEditarCardClientePJ">EDITAR</string>
+  <string name="btnSalvarCardClientePJ">SALVAR</string>
+  <string name="btnEditarCardSenha">EDITAR</string>
+  <string name="btnSalvarCardSenha">SALVAR</string>
 </resources>

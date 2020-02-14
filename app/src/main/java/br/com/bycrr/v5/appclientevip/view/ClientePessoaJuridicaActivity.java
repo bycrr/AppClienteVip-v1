@@ -170,6 +170,7 @@ public class ClientePessoaJuridicaActivity extends AppCompatActivity {
     //isPessoaFisica = preferences.getBoolean("pessoaFisica", false);
     ultimoIDClientePF = preferences.getInt("ultimoIDClientePF", -1);
   }
+
   public void simplesNacional(View view) {
     isSimplesNacional = chSimplesNacional.isChecked();
   }

@@ -130,7 +130,10 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void atualizarMeusDados(View view) {
-    if (cliente.isPessoaFisica()) {
+    Intent intent = new Intent(MainActivity.this, AtualizarMeusDadosActivity.class);
+    startActivity(intent);
+
+    /*if (cliente.isPessoaFisica()) {
       cliente.setPrimeiroNome("Claudio R");
       cliente.setSobrenome("Powerguido");
       clientePF.setNomeCompleto("Claudinho Powerguido");
@@ -145,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
       clientePJ.setRazaoSocial("Empresa do Claudio");
       Log.i(AppUtil.LOG_APP, "*** ALTERANDO DADOS CLIENTE PJ ***");
       Log.i(AppUtil.LOG_APP, "Razão Social: " + clientePJ.getRazaoSocial());
-    }
+    }*/
   }
 
   public void excluirMinhaConta(View view) {
